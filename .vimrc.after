@@ -1,0 +1,19 @@
+let g:solarized_termcolors=256
+set t_Co=16
+set background=dark
+colorscheme solarized
+
+let g:CommandTMaxFiles=50000
+let g:CommandTMaxDepth=15
+
+let g:tagbar_type_groovy = {
+    \ 'ctagstype' : 'groovy',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'c:class',
+        \ 'i:interface',
+        \ 'f:function',
+        \ 'v:variables',
+    \ ]
+    \ }
+

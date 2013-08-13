@@ -1,0 +1,5 @@
+let g:CommandTMaxFiles=50000
+
+let g:GrailsMapPrefix="m"
+
+let mapleader = ","

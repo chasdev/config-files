@@ -1,0 +1,22 @@
+{
+  "color_scheme": "Packages/User/Railscasts.tmTheme",
+  "show_full_path": true,
+  "find_selected_text": true,
+  "font_size": 17.0,
+  "ignored_packages":
+    [
+      // 'vintage' is NOT ignored (it is ignored by default)
+    ],
+  "vintage_start_in_command_mode": true,
+  "tab_size": 2,
+  "default_line_ending": "unix",
+  "translate_tabs_to_spaces": true,
+  "trim_trailing_white_space_on_save": true,
+  "bold_folder_labels": true,
+  "caret_style": "phase", // smooth/phase/blink/wide/solid
+  "highlight_line": true,
+  "scroll_past_end": true,
+  "line_padding_bottom": 1,
+  "line_padding_top": 1,
+  "fade_fold_buttons": false
+}
