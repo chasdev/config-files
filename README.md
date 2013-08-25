@@ -2,21 +2,24 @@
 
 I create sym links to the files in this repo so I can easily share configuration across my computers. 
 
-These files assume:
+These files currently assume OS X with the following:
 
-1. The Janus distribution for Vim. 
-1. Tmux
-1. Git
-1. Exuberant Tags (ctags)
-1. Kaleidoscope
+* The Janus distribution for Vim. 
+* iterm2
+* Tmux
+* Git
+* Exuberant Tags (ctags)
+* Kaleidoscope
 
-On OS X I use: 
-* brew to install ctags and tmux (and much more). 
-* gvm to manage groovy, grails, and gradle installations
-* Kaleidoscope as the diff and merge tool
-* Sublime Text 2 (occasional, I use tmux/vim primarily)
+(TODO: Support Ubuntu configuration within same files.)
+
+Other information about my own OS X environment: 
+* brew is used to install ctags and tmux (and much more). 
+* gvm is used to manage groovy, grails, and gradle installations
+* Kaleidoscope (commercial product) is used as the diff and merge tool
+* Sublime Text 2 (occasional use of this commercial product, I use tmux/vim primarily)
 * Iterm2 with Solarized
-* Node.js, npm, Ruby, rvm, 
+* Node.js, npm, Ruby, rvm 
 
 
 

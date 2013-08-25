@@ -1,7 +1,6 @@
 
 ## Tips and Cheats
 
-
 ### Miscellaneous Mac Tips
  
 *Finder* 
@@ -45,7 +44,7 @@ lsof -i tcp:8080
 ```
 
 To find processes that are listening:
-'''
+```
 lsof -i -P | grep LISTEN
 ```
 
@@ -72,9 +71,9 @@ References:
 * [tmux shortcuts and cheatsheet](https://gist.github.com/MohamedAlaa/2961058)
 
 CTRL-a (default is CTRL-b) then:
- * d = detach (exit back to normal terminal) and use normal vim keys 
- * s = create a new pane below the current one, resize with C-a Shift-J/K
- * [ <-- this starts 'copy mode' which is scrollable (type q to exit copy mode)
+* d  = detach (exit back to normal terminal) and use normal vim keys 
+* s  = create a new pane below the current one, resize with C-a Shift-J/K
+* \[ = this starts 'copy mode' which is scrollable (type q to exit copy mode)
 (or use trackpad to navigate and resize panes)
 
 #### MacVim / Vim 
@@ -84,6 +83,30 @@ References:
 * See tmux references above
 
 Install Solarized for both vim and iTerm2
+
+*NerdTree*
+<Leader> n  = toggles sidebar
+I (shift i) = shows hidden files in sidebar
+go          = previews file
+s           = opens new pane between sidebar and existing pane
+
+*BufferGator*
+<Leader> b = toggles buffer listing
+
+*EasyMotion*
+<Leader><Leader>fA = highlight 'finds' of 'A'
+
+*ZoomWin*
+Ctrl-W o = zoom/unzoom a pane when using split panes
+
+*TagBar*
+<Leader>rt = toggle tagbar (CTAG tags of current file)
+
+*NERDcommenter*
+<Leader>/ = toggle commenting current line / select lines
+
+*Ack*
+<Leader>f = bring up :Ack
 
 References:
 * [Using Marks](http://vim.wikia.com/wiki/Using_marks)
@@ -105,10 +128,10 @@ To replace a case-sensitive word:
 :%s/word\C/newword/g
 ```
 
-To select columns -- ctrl-V goes into visual mode, 
-                     selecting columns - use esc esc to fill other columns
+To select columns:
+ctrl-V goes into visual mode, selecting columns - use esc esc to fill other columns
 
-To remove Windows line returns that show as ^M, use 
+To remove Windows line returns that show as ^M, use:
 ```
 :%s/^V^M//g
 ``` 

@@ -1,10 +1,42 @@
-let g:solarized_termcolors=256
-set t_Co=16
+
+set foldmethod=indent
+" Note, perl automatically sets foldmethod in the syntax file
+autocmd Syntax c,cpp,groovy,rb,vim,xml,html,xhtml setlocal foldmethod=syntax
+autocmd Syntax c,cpp,groovy,rb,vim,xml,html,xhtml,perl normal zR
+set nofoldenable
+"set foldlevelstart=0
+"set foldlevel=99
+
+syntax on
+
+" solarized options 
 set background=dark
+"set t_Co=16
+let g:solarized_termtrans = 1
+let g:solarized_termcolors = 256
+let g:solarized_visibility = "high"
+let g:solarized_contrast = "high"
 colorscheme solarized
 
 let g:CommandTMaxFiles=50000
 let g:CommandTMaxDepth=15
+
+
+"Wrap existing text
+set tw=0
+set wrap
+set linebreak
+set nolist  " list disables linebreak
+set colorcolumn=85
+
+"Wrap new text
+set textwidth=0
+set wrapmargin=0
+
+" Use leader-leader to go back to previous buffer
+nnoremap <leader><leader> <c-^>
+
+" ***************************  Groovy support  ***************************
 
 let g:tagbar_type_groovy = {
     \ 'ctagstype' : 'groovy',
@@ -16,4 +48,26 @@ let g:tagbar_type_groovy = {
         \ 'v:variables',
     \ ]
     \ }
+
+" Navigation functions (open class file, find subclasses)
+" from:  http://www.objectpartners.com/2012/02/21/using-vim-as-your-grails-ide-part-1-navigating-your-project/
+" (except using Ack versus Grep)
+map <C-i> :call OpenVariableUnderCursor(expand("<cword>"))<CR>
+map <Leader>h :silent call FindSubClasses(expand("<cword>"))<CR>
+
+function! OpenVariableUnderCursor(varName)
+    let filename = substitute(a:varName,'(<w+>)', 'u1', 'g')
+    :call OpenFileUnderCursor(filename)
+endfunction
+
+function! OpenFileUnderCursor(filename)
+    let ext = fnamemodify(expand("%:p"), ":t:e")
+    execute ":find " . a:filename . "." . ext
+endfunction
+
+function! FindSubClasses(classname)
+"    execute ":Ack '\\(implements\\|extends\\) " . a:classname . "' ."
+    execute ":Ack '\(implements\\|extends\) " . a:classname . "' *"
+endfunction
+
 
