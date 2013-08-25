@@ -22,14 +22,11 @@ let g:CommandTMaxFiles=50000
 let g:CommandTMaxDepth=15
 
 
-"Wrap existing text
-set tw=0
+" Line wrapping
 set wrap
 set linebreak
 set nolist  " list disables linebreak
 set colorcolumn=85
-
-"Wrap new text
 set textwidth=0
 set wrapmargin=0
 
