@@ -60,7 +60,7 @@ alias devnotes="v ~/devtools/dev_notes.md"
 # ----------------- Mac OS X apps -----------------
 alias calc="open -a Calculator"
 alias saf="open -a Safari"
-
+alias marked="open -a Marked"
 
 # -------------------- MSDOS ----------------------
 alias cls='clear'
@@ -72,6 +72,10 @@ alias r='rails '
 # -------------------------------------------------------------------------------
 #                                 History
 # -------------------------------------------------------------------------------
+
+# Don't save repeated commands; don't save commands that start with a space
+export HISTIGNORE="&:[ ]*"
+
 # These 3 lines remove duplicates, limit the size, and automatically append when closing a session
 export HISTCONTROL=erasedups
 export HISTSIZE=10000
