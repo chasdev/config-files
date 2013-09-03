@@ -4,13 +4,19 @@
 #                                      Aliases
 # -------------------------------------------------------------------------------
 
+# ---------------- General Aliases ---------------
+alias bp='v ~/.bash_profile'
 alias sbp='source ~/.bash_profile'
 
 alias hosts='sudo v /etc/hosts'
-alias bp='v ~/.bash_profile'
-alias rp='cd ~/working/rails_projects'
-alias np='cd ~/working/js_projects/node_projects'
-alias rat='cd ~/working/js_projects/node_projects/rat'
+
+# Flush the DNS -- sometimes helpful after connecting to or disconnecting from VPN
+alias flushdns="dscacheutil -flushcache"
+
+# --------------- Tmux Aliases -------------------
+alias ta='tmux a -t'
+alias tn='tmux new -s'
+alias tl='tmux ls'
 
 # Create alias to 'todo.sh', and configure bash completion to work with this alias
 alias t='/Users/chas/devtools/ginatrapani-todo.txt-cli-da68336/todo.sh -d ~/.todo.cfg'
@@ -54,7 +60,7 @@ alias ff="find . -type f -name "
 
 # -------------------- VIM / MacVim ---------------
 
-alias v="vim -N "
+alias v="vim -N"
 alias devnotes="v ~/devtools/dev_notes.md"
 
 # ----------------- Mac OS X apps -----------------
@@ -62,12 +68,13 @@ alias calc="open -a Calculator"
 alias saf="open -a Safari"
 alias marked="open -a Marked"
 
-# -------------------- MSDOS ----------------------
-alias cls='clear'
-alias dir='ls'
+# ------------------- Projects --------------------
+alias rp='cd ~/working/rails_projects'
+alias np='cd ~/working/js_projects/node_projects'
+alias rat='cd ~/working/js_projects/node_projects/rat'
 
-# Ruby on Rails
-alias r='rails '
+alias r='rails'
+alias g='grails'
 
 # -------------------------------------------------------------------------------
 #                                 History
@@ -89,14 +96,25 @@ shopt -s histappend
 # the normal 'git co xyz' commands.
 
 if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
-. /usr/local/etc/bash_completion.d/git-completion.bash
+  . /usr/local/etc/bash_completion.d/git-completion.bash
 fi
 
 # -------------------------------------------------------------------------------
 #                            Bash completion for 'todo.sh'
 # -------------------------------------------------------------------------------
-source /Users/chas/devtools/ginatrapani-todo.txt-cli-da68336/todo_completion
-complete -F _todo t
+if [ -f /Users/chas/devtools/ginatrapani-todo.txt-cli-da68336/todo_completion ]; then
+  source /Users/chas/devtools/ginatrapani-todo.txt-cli-da68336/todo_completion
+  complete -F _todo t
+fi
+
+
+# -------------------------------------------------------------------------------
+#                            Bash completion for 'tmux'
+# -------------------------------------------------------------------------------
+if [ -f /usr/local/Cellar/tmux/1.8/etc/bash_completion.d/tmux ]; then
+  source /usr/local/Cellar/tmux/1.8/etc/bash_completion.d/tmux
+fi
+
 
 # -------------------------------------------------------------------------------
 #                                 Terminal Colors
