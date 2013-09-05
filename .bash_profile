@@ -61,7 +61,7 @@ alias ff="find . -type f -name "
 # -------------------- VIM / MacVim ---------------
 
 alias v="vim -N"
-alias devnotes="v ~/devtools/dev_notes.md"
+alias devnotes="v ~/devtools/config-files/dev_notes.md"
 
 # ----------------- Mac OS X apps -----------------
 alias calc="open -a Calculator"
@@ -221,4 +221,13 @@ alias lpro="export PS1=\$LPS1"
 #if [[ -s "$HOME/.rvm/scripts/rvm" ]] ; then source "$HOME/.rvm/scripts/rvm" ; fi
 #[[ -r $rvm_path/scripts/completion ]] && source $rvm_path/scripts/completion
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
+
+# -------------------------------------------------------------------------------
+#                                   Grails
+# -------------------------------------------------------------------------------
+
+#THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
+if [ -f /Users/chardt/.gvm/bin/gvm-init.sh ]; then
+  [[ -s "/Users/chardt/.gvm/bin/gvm-init.sh" && -z $(which gvm-init.sh | grep '/gvm-init.sh') ]] && source "/Users/chardt/.gvm/bin/gvm-init.sh"
+fi
 
