@@ -16,6 +16,7 @@ alias flushdns="dscacheutil -flushcache"
 # --------------- Tmux Aliases -------------------
 alias ta='tmux a -t'
 alias tn='tmux new -s'
+alias tk='tmux kill-session -t'
 alias tl='tmux ls'
 
 # Create alias to 'todo.sh', and configure bash completion to work with this alias
@@ -37,9 +38,6 @@ alias gd='git diff | v'
 alias gi='grep -i'
 alias gl='git l'
 alias gst='git st'
-
-# --------------------- Mongo --------------------
-alias mongostart='mongod run --config /usr/local/Cellar/mongodb/2.0.0-x86_64/mongod.conf'
 
 # ----------------- command line -----------------
 alias cd..="cd .."
@@ -213,6 +211,25 @@ alias sprompt="export PS1=\$SPS1"
 alias lprompt="export PS1=\$LPS1"
 alias lpro="export PS1=\$LPS1"
 
+
+# -------------------------------------------------------------------------------
+#                                    MongoDB
+# -------------------------------------------------------------------------------
+alias mongostart='mongod run --config /usr/local/Cellar/mongodb/2.0.0-x86_64/mongod.conf'
+
+
+# -------------------------------------------------------------------------------
+#                                 Oracle Sqlplus
+# -------------------------------------------------------------------------------
+# ORACLE SQL PLUS ENV VARIABLES 
+if [ -d /opt/oracle/instantclient ]; then
+  export ORACLE_HOME=/opt/oracle/instantclient 
+  export NLS_LANG="AMERICAN_AMERICA.UTF8" 
+  export DYLD_LIBRARY_PATH=$ORACLE_HOME
+  export TWO_TASK=oracledb:1521/BAN83
+fi
+
+
 # -------------------------------------------------------------------------------
 #                                    Rails
 # -------------------------------------------------------------------------------
@@ -221,6 +238,13 @@ alias lpro="export PS1=\$LPS1"
 #if [[ -s "$HOME/.rvm/scripts/rvm" ]] ; then source "$HOME/.rvm/scripts/rvm" ; fi
 #[[ -r $rvm_path/scripts/completion ]] && source $rvm_path/scripts/completion
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
+
+
+# -------------------------------------------------------------------------------
+#                                    Java
+# -------------------------------------------------------------------------------
+export JAVA_OPTS="-XX:MaxPermSize=512m -XX:PermSize=128m -Xms1024m -Xmx3096m -Dhttp.proxyPort=8080 -Dhttp.proxyHost=www-proxy.sct.com -Dhttp.proxyHost=www-proxy.sct.com -Dhttp.proxyPort=8080 -DPROXY_SERVER_NAME=http://m039220:8081/nexus/content/groups/public"
+
 
 # -------------------------------------------------------------------------------
 #                                   Grails
