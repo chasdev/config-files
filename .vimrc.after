@@ -1,15 +1,22 @@
 
-set foldmethod=indent
 " Note, perl automatically sets foldmethod in the syntax file
-autocmd Syntax c,cpp,groovy,rb,vim,xml,html,xhtml setlocal foldmethod=syntax
-autocmd Syntax c,cpp,groovy,rb,vim,xml,html,xhtml,perl normal zR
+autocmd Syntax c,cpp,groovy,java,rb,vim,xml,html,xhtml setlocal foldmethod=syntax
+autocmd Syntax c,cpp,groovy,java,rb,vim,xml,html,xhtml,perl normal zR
+
+" Delete trailing whitespace when saving file
+autocmd FileType c,cpp,groovy,java,rb,vim,xml,html,xhtml,perl autocmd BufWritePre <buffer> :%s/\s\+$//e
+
+set autoindent    " always set autoindenting on
+set copyindent    " copy the previous indentation on autoindenting
+
+set foldmethod=indent
 set nofoldenable
 "set foldlevelstart=0
 "set foldlevel=99
 
 syntax on
 
-" solarized options 
+" solarized options
 set background=dark
 "set t_Co=16
 let g:solarized_termtrans = 1
@@ -25,13 +32,29 @@ let g:CommandTMaxDepth=15
 " Line wrapping
 set wrap
 set linebreak
-set nolist  " list disables linebreak
+"set nolist  " list disables linebreak
 set colorcolumn=85
 set textwidth=0
 set wrapmargin=0
 
-" Use leader-leader to go back to previous buffer
+set list
+
+" Show trailing spaces as a . (although we'll delete them on saving)
+set listchars=tab:→\ ,trail:.
+
+
+" Use leader-leader to go back to previous bufferA
 nnoremap <leader><leader> <c-^>
+
+" Copy to OS X clipboard usig Ctrl-x and Ctrl-c as normal"
+" TODO: Copy grabs entire line versus just the selection
+vmap <C-x> :!pbcopy<CR>
+vmap <C-c> :w !pbcopy<CR><CR>
+
+" Paste from OS X clipboard using Ctrl-k
+" TODO: Paste incorrectly inserts a return before pasting
+nmap <C-k> :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
+imap <C-k> <Esc>:set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
 
 " ***************************  Groovy support  ***************************
 
@@ -63,7 +86,6 @@ function! OpenFileUnderCursor(filename)
 endfunction
 
 function! FindSubClasses(classname)
-"    execute ":Ack '\\(implements\\|extends\\) " . a:classname . "' ."
     execute ":Ack '\(implements\\|extends\) " . a:classname . "' *"
 endfunction
 

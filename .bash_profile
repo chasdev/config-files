@@ -243,15 +243,19 @@ fi
 # -------------------------------------------------------------------------------
 #                                    Java
 # -------------------------------------------------------------------------------
-export JAVA_OPTS="-XX:MaxPermSize=512m -XX:PermSize=128m -Xms1024m -Xmx3096m -Dhttp.proxyPort=8080 -Dhttp.proxyHost=www-proxy.sct.com -Dhttp.proxyHost=www-proxy.sct.com -Dhttp.proxyPort=8080 -DPROXY_SERVER_NAME=http://m039220:8081/nexus/content/groups/public"
-
+if [ -d /opt/oracle/instantclient ]; then
+    # hack -- identifying work computer (because it has oracle)
+    export JAVA_OPTS="-XX:MaxPermSize=512m -XX:PermSize=128m -Xms1024m -Xmx3096m -Dhttp.proxyPort=8080 -Dhttp.proxyHost=www-proxy.sct.com -Dhttp.proxyHost=www-proxy.sct.com -Dhttp.proxyPort=8080 -DPROXY_SERVER_NAME=http://m039220:8081/nexus/content/groups/public"
+else
+    export JAVA_OPTS="-XX:MaxPermSize=512m -XX:PermSize=128m -Xms1024m -Xmx3096m"
+fi
 
 # -------------------------------------------------------------------------------
 #                                   Grails
 # -------------------------------------------------------------------------------
 
 #THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
-if [ -f /Users/chardt/.gvm/bin/gvm-init.sh ]; then
-  [[ -s "/Users/chardt/.gvm/bin/gvm-init.sh" && -z $(which gvm-init.sh | grep '/gvm-init.sh') ]] && source "/Users/chardt/.gvm/bin/gvm-init.sh"
+if [ -f $HOME/.gvm/bin/gvm-init.sh ]; then
+  [[ -s "$HOME/.gvm/bin/gvm-init.sh" && -z $(which gvm-init.sh | grep '/gvm-init.sh') ]] && source "$HOME/.gvm/bin/gvm-init.sh"
 fi
 

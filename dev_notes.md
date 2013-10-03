@@ -97,7 +97,7 @@ s           = opens new pane between sidebar and existing pane
 <Leader><Leader>fA = highlight 'finds' of 'A'
 
 *ZoomWin*
-Ctrl-W o = zoom/unzoom a pane when using split panes
+Ctrl-w o = zoom/unzoom a pane when using split panes
 
 *TagBar*
 <Leader>rt = toggle tagbar (CTAG tags of current file)
@@ -107,6 +107,11 @@ Ctrl-W o = zoom/unzoom a pane when using split panes
 
 *Ack*
 <Leader>f = bring up :Ack
+
+*Grails functions*
+Ctrl-i = goto Groovy class under cursor
+
+<Leader>h = Show all subclasses of class name under cursor as a quickfix list
 
 References:
 * [Using Marks](http://vim.wikia.com/wiki/Using_marks)
