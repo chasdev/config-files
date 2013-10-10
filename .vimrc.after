@@ -46,6 +46,9 @@ set listchars=tab:→\ ,trail:.
 " Use leader-leader to go back to previous bufferA
 nnoremap <leader><leader> <c-^>
 
+" Support repeated pasting following a yank
+xnoremap p pgvy
+
 " Copy to OS X clipboard usig Ctrl-x and Ctrl-c as normal"
 " TODO: Copy grabs entire line versus just the selection
 vmap <C-x> :!pbcopy<CR>
