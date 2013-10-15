@@ -40,8 +40,18 @@ alias gl='git l'
 alias gst='git st'
 
 # ----------------- command line -----------------
+
+#correct the typos in the cd command automatically
+shopt -s cdspell
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias ..2="cd ../.."
+alias ..3="cd ../../.."
+alias ..4="cd ../../../.."
+alias ..5="cd ../../../../.."
 alias cd..="cd .."
-alias cd...="cd ../.."
 alias gi="grep -i"
 alias l="ls -G"
 alias ls="ls -G"
