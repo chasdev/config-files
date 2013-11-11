@@ -44,21 +44,29 @@ alias gst='git st'
 #correct the typos in the cd command automatically
 shopt -s cdspell
 
+# add a lot of (albeit redundant) aliases to allow easy navigation
 alias ..="cd .."
+alias cd..="cd .."
+
 alias ...="cd ../.."
-alias ....="cd ../../.."
 alias ..2="cd ../.."
+alias cd..2="cd ../.."
+
+alias ....="cd ../../.."
 alias ..3="cd ../../.."
+alias cd..3="cd ../../.."
+
 alias ..4="cd ../../../.."
 alias ..5="cd ../../../../.."
-alias cd..="cd .."
 alias gi="grep -i"
 alias l="ls -G"
 alias ls="ls -G"
 alias la="ls -laG"
-alias tree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|/'"
 alias lm="ls -laG | more"
 alias lf="ls -FG"
+
+alias tree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|/'"
+
 alias h=history
 alias hm="history | more"
 
