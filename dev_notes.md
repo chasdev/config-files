@@ -133,6 +133,11 @@ To replace a case-sensitive word:
 :%s/word\C/newword/g
 ```
 
+To replace tabs with spaces:
+```
+:retab
+```
+
 To select columns:
 ctrl-V goes into visual mode, selecting columns - use esc esc to fill other columns
 
@@ -152,6 +157,26 @@ To tag a project in order to use exuberant tags plugin:
 To delete a file, use:
 ```
 :Explore -- and then use 'R' to remove the highlighted file
+```
+
+#### Git
+
+To see the history of a file:
+
+```
+git --no-pager log --pretty=oneline --name-only --abbrev-commit --follow -p some_file
+```
+
+To list contributors (and show number of files):
+
+```
+git ls-files -z | xargs -0n1 git blame -w | perl -n -e '/^.*?\((.*?)\s[\d]{4}/; print $1,"\n"' | sort -f | uniq -c | sort -n
+```
+
+To show specific contibution statistics for a contributor:
+
+```
+git log --shortstat --author "chasdev" | grep "files changed" | awk '{files+=$1; inserted+=$4; deleted+=$6} END {print "files changed", files, "lines inserted:", inserted, "lines deleted:", deleted}'
 ```
 
 #### Brew 
