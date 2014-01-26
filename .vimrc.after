@@ -1,10 +1,10 @@
 
 " Note, perl automatically sets foldmethod in the syntax file
-autocmd Syntax c,cpp,groovy,java,rb,vim,xml,html,xhtml setlocal foldmethod=syntax
-autocmd Syntax c,cpp,groovy,java,rb,vim,xml,html,xhtml,perl normal zR
+autocmd Syntax c,cpp,groovy,java,javascript,js,rb,vim,xml,html,xhtml setlocal foldmethod=syntax
+autocmd Syntax c,cpp,groovy,java,javascript,js,rb,vim,xml,html,xhtml,perl normal zR
 
 " Delete trailing whitespace when saving file
-autocmd FileType c,cpp,groovy,java,rb,vim,xml,html,xhtml,perl autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd FileType c,cpp,groovy,java,javascript,js,rb,vim,xml,html,xhtml,perl autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 set autoindent    " always set autoindenting on
 set copyindent    " copy the previous indentation on autoindenting

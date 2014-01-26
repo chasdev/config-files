@@ -1,3 +1,10 @@
+
+" To disable built-in snippets and use a clone of
+" https://github.com/honza/vim-snippets within the .janus directory, use:
+"
+"call janus#disable_plugin('snipmate-snippets')
+
+
 let g:CommandTMaxFiles=50000
 
 let g:GrailsMapPrefix="m"
