@@ -179,6 +179,27 @@ To show specific contibution statistics for a contributor:
 git log --shortstat --author "chasdev" | grep "files changed" | awk '{files+=$1; inserted+=$4; deleted+=$6} END {print "files changed", files, "lines inserted:", inserted, "lines deleted:", deleted}'
 ```
 
+*tags*
+
+Delete a remote tag named '12345':
+
+```
+git tag -d 12345
+git push origin :refs/tags/12345
+```
+
+Push a tag:
+
+```
+git push origin my-tag
+```
+
+To ensure the remote tags are fetched:
+
+```
+git fetch -t
+```
+
 #### Brew 
 
 If 'brew update' fails with conflicts, cd /usr/local which is a git directory, and stash or commit on a different branch, then re-try. 

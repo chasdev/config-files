@@ -20,7 +20,9 @@ alias tk='tmux kill-session -t'
 alias tl='tmux ls'
 
 # Create alias to 'todo.sh', and configure bash completion to work with this alias
-alias t='/Users/chas/devtools/ginatrapani-todo.txt-cli-da68336/todo.sh -d ~/.todo.cfg'
+if [ -f $HOME/devtools/todo.txt-cli/todo.sh ]; then
+  alias t="$HOME/devtools/todo.txt-cli/todo.sh -d ~/.todo.cfg"
+fi
 export TODOTXT_DEFAULT_ACTION=ls
 alias todotxt='subl ~/Dropbox/todos/todo.txt'
 alias todos='todotxt'
@@ -77,6 +79,10 @@ alias ff="find . -type f -name "
 # -------------------- VIM / MacVim ---------------
 
 alias v="vim -N"
+
+# If vim crashes with SEGV fault, the temp files need to be removed...
+alias vimclean="rm -rf $HOME/.vim/_temp/%Users%$USER%working%*"
+
 alias devnotes="v ~/devtools/config-files/dev_notes.md"
 
 # ----------------- Mac OS X apps -----------------
@@ -116,10 +122,10 @@ if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
 fi
 
 # -------------------------------------------------------------------------------
-#                            Bash completion for 'todo.sh'
+#                          Bash completion for 'todo.sh'
 # -------------------------------------------------------------------------------
-if [ -f /Users/chas/devtools/ginatrapani-todo.txt-cli-da68336/todo_completion ]; then
-  source /Users/chas/devtools/ginatrapani-todo.txt-cli-da68336/todo_completion
+if [ -f $HOME/devtools/todo.txt-cli/todo_completion ]; then
+  source $HOME/devtools/todo.txt-cli/todo_completion
   complete -F _todo t
 fi
 
