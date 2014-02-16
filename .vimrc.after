@@ -48,6 +48,7 @@ nnoremap <leader><leader> <c-^>
 
 " Support repeated pasting following a yank
 xnoremap p pgvy
+xnoremap P Pgvy
 
 " Copy to OS X clipboard usig Ctrl-x and Ctrl-c as normal"
 " TODO: Copy grabs entire line versus just the selection
