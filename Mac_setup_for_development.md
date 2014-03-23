@@ -74,32 +74,28 @@ filetype plugin indent on
 Now install other plugins by cloning repos under a .vim-bundles directory. 
 
 * Install [Solarized](http://ethanschoonover.com/solarized/vim-colors-solarized)
-* Install [Command T](https://github.com/wincent/Command-T/)  (Here are additional [instructions](https://github.com/wincent/Command-T/blob/master/doc/command-t.txt))
+* Install [Command-T](git://git.wincent.com/command-t.git)  (Here are additional [instructions](https://github.com/wincent/Command-T/blob/master/doc/command-t.txt))
 * Install [ack](https://github.com/mileszs/ack.vim)
 * Install [sensible.vim](https://github.com/tpope/vim-sensible)
 * Install [easymotion](https://github.com/Lokaltog/vim-easymotion)
+* Install [SuperTab](git@github.com:ervandew/supertab.git) 
+* Install [tlib](https://github.com/tomtom/tlib_vim.git) (dependency for SnipMate)
+* Install [vim-addon-mv-utils](https://github.com/MarcWeber/vim-addon-mw-utils.git) (dependency for SnipMate)
+* Install [SnipMate](https://github.com/garbas/vim-snipmate.git)
+* Install [SnipMate](https://github.com/garbas/vim-snipmate.git)
+* Install [Solarized](git://github.com/altercation/vim-colors-solarized.git)
+* Install [Fugitive](git@github.com:tpope/vim-fugitive.git)
+* Install [Vim-Scala](git@github.com:derekwyatt/vim-scala.git)
+* Install [Vim-Snippets](git@github.com:honza/vim-snippets.git)
+* Install [ZoomWin](git@github.com:vits/ZoomWin.git) (Note: This is a fork as ver >24 is needed)
+
+Command-T requires a few more commands to be executed... 
 
 ```bash
-cd .vim-bundles
-# Solarized so colors match iTerm (which uses Solarized)
-git clone git://github.com/altercation/vim-colors-solarized.git
-#
-# Sensible.vim "Defaults everyone can agree on"
-git clone git@github.com:tpope/vim-sensible.git
-#
-# Command-T, which provides fuzzy file lookup in vim
-git clone git://git.wincent.com/command-t.git
 cd command-t/ruby/command-t
 ruby extconf.rb
 make
-#
-# Ack ("grep for developers")
-git clone git@github.com:mileszs/ack.vim.git
-#
-# Easymotion
-git clone git@github.com:Lokaltog/vim-easymotion.git
 ```
-
 ##Install the JVM and Supporting Tools and Languages
 
 From iTerm, try 'java -version'. This will bring up a popup with a link to download the JDK which you should then install.  
@@ -129,8 +125,6 @@ Download the Typesafe Activator from [here](http://typesafe.com/platform/getstar
 
 ##Install an IDE
 
-While not recommended for day-to-day development, IDEs provide very nice debugging capabilities that are occasionally very important.
-
-
+While I do not use an IDE for day-to-day development, occasionally it's nice to have the debugging capabilities.
 
 
