@@ -4,6 +4,9 @@ execute pathogen#infect('bundle/{}', '~/.vim-bundles/{}')
 syntax on
 filetype plugin indent on
 
+set backupdir=~/tmp
+set noswapfile
+
 let mapleader=","
 
 let g:solarized_termtrans = 1
@@ -21,14 +24,14 @@ map <leader>l <C-W>l
 
 " Simplify zooming - using ZoomWin version 25i
 " git@github.com:vits/ZoomWin.git  (ver 24 results in E3 File Exists errors)
-nmap <leader>o <c-w>o
+nmap <leader>z <c-w>o
 
 "" Show numbers, ,n to toggle relative numbering
 set number
 nnoremap <leader>n :set norelativenumber!<CR>
 
 "" Exclude directories from listings
-:set wildignore+=*.class,target/**,.git
+:set wildignore+=*.class,target/**,.git,.swp
 
 "" Support repeated pasting following a yank
 xnoremap p pgvy

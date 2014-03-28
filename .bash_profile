@@ -21,8 +21,8 @@ alias tk='tmux kill-session -t'
 alias tl='tmux ls'
 
 # Create alias to 'todo.sh', and configure bash completion to work with this alias
-if [ -f $HOME/devtools/todo.txt-cli/todo.sh ]; then
-  alias t="$HOME/devtools/todo.txt-cli/todo.sh -d ~/.todo.cfg"
+if [ -f $HOME/devtools/config-files/todo.txt-cli/todo.sh ]; then
+  alias t="$HOME/devtools/config-files/todo.txt-cli/todo.sh -d ~/.todo.cfg"
 fi
 export TODOTXT_DEFAULT_ACTION=ls
 alias todotxt='subl ~/Dropbox/todos/todo.txt'
@@ -118,15 +118,15 @@ shopt -s histappend
 # Note: this does not work when using the Git aliases below, but only when using
 # the normal 'git co xyz' commands.
 
-if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
-  . /usr/local/etc/bash_completion.d/git-completion.bash
+if [ -f $HOME/devtools/config-files/git-completion.bash ]; then
+  source $HOME/devtools/config-files/git-completion.bash
 fi
 
 # -------------------------------------------------------------------------------
 #                          Bash completion for 'todo.sh'
 # -------------------------------------------------------------------------------
-if [ -f $HOME/devtools/todo.txt-cli/todo_completion ]; then
-  source $HOME/devtools/todo.txt-cli/todo_completion
+if [ -f $HOME/devtools/config-files/todo.txt-cli/todo_completion ]; then
+  source $HOME/devtools/config-files/todo.txt-cli/todo_completion
   complete -F _todo t
 fi
 
@@ -134,8 +134,8 @@ fi
 # -------------------------------------------------------------------------------
 #                            Bash completion for 'tmux'
 # -------------------------------------------------------------------------------
-if [ -f /usr/local/Cellar/tmux/1.8/etc/bash_completion.d/tmux ]; then
-  source /usr/local/Cellar/tmux/1.8/etc/bash_completion.d/tmux
+if [ -f /usr/local/etc/bash_completion.d/tmux ]; then
+  source /usr/local/etc/bash_completion.d/tmux
 fi
 
 
@@ -226,15 +226,24 @@ ORIGINAL="\[\033[0m\]"
 DEFAULT="\[\033[0;39m\]"
 
 LPS1="$CYAN\$(date +%H:%M) \${newPWD} $BOLD_YELLOW\$(parse_git_branch)$DEFAULT\$ "
-SPS1="\`if [ \$? = 0 ]; then echo -e '$GREEN\xE2\x98\xBA'; else echo -e '$RED\xE2\x98\xB9'; fi\` \[\e[01;34m\]\[\e[00m\]"
+SPS1="$BOLD_YELLOW\$(parse_git_branch)$DEFAULT\$ "
+TPS1="\`if [ \$? = 0 ]; then echo -e '$GREEN\xE2\x98\xBA'; else echo -e '$RED\xE2\x98\xB9'; fi\` \[\e[01;34m\]\[\e[00m\]"
 
 PS1="$LPS1"
 
+# Short prompt just shows the git branch
 alias sp="export PS1=\$SPS1"
 alias spro="export PS1=\$SPS1"
 alias sprompt="export PS1=\$SPS1"
-alias lprompt="export PS1=\$LPS1"
+alias shortprompt="export PS1=\$SPS1"
+# Tiny prompt is just a green or red smiley face
+alias tpro="export PS1=\$TPS1"
+alias tprompt="export PS1=\$TPS1"
+alias tinyprompt="export PS1=\$TPS1"
+# Long prompt shows time, path, and git branch
 alias lpro="export PS1=\$LPS1"
+alias lprompt="export PS1=\$LPS1"
+alias longprompt="export PS1=\$LPS1"
 
 
 # -------------------------------------------------------------------------------
@@ -274,6 +283,11 @@ if [ -d /opt/oracle/instantclient ]; then
 else
     export JAVA_OPTS="-XX:MaxPermSize=512m -XX:PermSize=128m -Xms1024m -Xmx3096m"
 fi
+
+# -------------------------------------------------------------------------------
+#                                 Scala / SBT
+# -------------------------------------------------------------------------------
+export SBT_OPTS="-XX:MaxPermSize=512m"
 
 # -------------------------------------------------------------------------------
 #                                   Grails
