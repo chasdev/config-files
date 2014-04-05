@@ -60,7 +60,7 @@ $ ln -s $HOME/devtools/config-files/.vimrc .vimrc
 $ ln -s $HOME/devtools/config-files config-files
 ```
 
-My vim configuration generally follows the advice found here: [Vim:revisted](http://mislav.uniqpath.com/2011/12/vim-revisited/). Previously I used [janus](https://github.com/carlhuda/janus) which is a very nice (and simple) installation. However, I've found it includes more than I want so have moved to storing a .vimrc in my config-files repository. (The .vimrc.before and .vimrc.after files used for a janus distribution are retained for now, but they are not used in this non-janus configuration. Conversely, if you intend to use janus and want to use my config-files, you should symlink the .vimrc.before and .vimrc.after files and NOT the .vimrc file as shown above.)
+My vim configuration generally follows the advice found here: [Vim:revisted](http://mislav.uniqpath.com/2011/12/vim-revisited/). Previously I used [janus](https://github.com/carlhuda/janus) which is a very nice (and simple) installation. However, I've found it includes more than I want so have moved to using a simpler pathogen-based solution. 
 
 First, install pathogen which will allow other plugins to be installed simply by cloning them
 
