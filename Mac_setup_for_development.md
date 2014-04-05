@@ -37,6 +37,12 @@ $ brew install vim && brew install macvim
 $ brew link macvim
 ```
 
+If you encounter a segmentation fault launching vim and use rvm to manage ruby versions, you will need to uninstall and reinstall using the system ruby installation.
+
+```
+$ brew uninstall vim; rvm system; brew install vim
+```
+
 ##Configure the shell, tmux, and vim
 
 Configure iterm to use [Solarized](http://ethanschoonover.com/solarized). Download Solarized (e.g., under ~/devtools/), unzip, and then in iTerm 'Preferences' select 'Profiles' and the 'Colors' tab, click the 'Load Presets' button, and 'import' the 'solarized/iterm2-colors-solarized/Solarized Dark.itermcolors', then make sure it is selected in iTerm.  
