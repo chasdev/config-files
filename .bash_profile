@@ -247,6 +247,14 @@ alias longprompt="export PS1=\$LPS1"
 
 
 # -------------------------------------------------------------------------------
+#                         NVM (manage Node.js versions)
+# -------------------------------------------------------------------------------
+if [ -f $HOME/.nvm/nvm.sh ]; then
+  source $HOME/.nvm/nvm.sh
+  [[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
+fi
+
+# -------------------------------------------------------------------------------
 #                                    MongoDB
 # -------------------------------------------------------------------------------
 alias mongostart='mongod run --config /usr/local/Cellar/mongodb/2.0.0-x86_64/mongod.conf'

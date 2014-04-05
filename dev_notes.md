@@ -204,6 +204,28 @@ git fetch -t
 
 If 'brew update' fails with conflicts, cd /usr/local which is a git directory, and stash or commit on a different branch, then re-try. 
 
+#### Couchdb
+
+```
+brew update
+brew install couchdb
+```
+
+```
+To test CouchDB run:
+    curl http://127.0.0.1:5984/
+
+The reply should look like:
+    {"couchdb":"Welcome","uuid":"....","version":"1.5.0","vendor":{"version":"1.5.0-1","name":"Homebrew"}}
+
+To have launchd start couchdb at login:
+    ln -sfv /usr/local/opt/couchdb/*.plist ~/Library/LaunchAgents
+Then to load couchdb now:
+    launchctl load ~/Library/LaunchAgents/homebrew.mxcl.couchdb.plist
+Or, if you don't want/need launchctl, you can just run:
+    couchdb
+```
+
 #### MongoDB 
 
 Mongo Database
@@ -213,26 +235,21 @@ brew update
 brew install mongodb
 ```
 
-If this is your first install, automatically load on login with:
+To have launchd start mongodb at login:
+
 ```
-    mkdir -p ~/Library/LaunchAgents
-    cp /usr/local/Cellar/mongodb/2.0.0-x86_64/org.mongodb.mongod.plist ~/Library/LaunchAgents/
-    launchctl load -w ~/Library/LaunchAgents/org.mongodb.mongod.plist
+    ln -sfv /usr/local/opt/mongodb/*.plist ~/Library/LaunchAgents
 ```
 
-If this is an upgrade and you already have the org.mongodb.mongod.plist loaded:
+Then to load mongodb now:
+
 ```
-    launchctl unload -w ~/Library/LaunchAgents/org.mongodb.mongod.plist
-    cp /usr/local/Cellar/mongodb/2.0.0-x86_64/org.mongodb.mongod.plist ~/Library/LaunchAgents/
-    launchctl load -w ~/Library/LaunchAgents/org.mongodb.mongod.plist
+    launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mongodb.plist
 ```
 
-Or start it manually:
+Or, if you don't want/need launchctl, you can just run:
+
 ```
-    mongod run --config /usr/local/Cellar/mongodb/2.0.0-x86_64/mongod.conf
+    mongod --config /usr/local/etc/mongod.conf
 ```
 
-MongoDB 1.8+ includes a feature for Write Ahead Logging (Journaling), which has been enabled by default.
-To disable journaling, use --nojournal.
-==> Summary
-/usr/local/Cellar/mongodb/2.0.0-x86_64: 17 files, 120M, built in 15 seconds

@@ -17,25 +17,24 @@
 * [Git](http://git-scm.com/download/mac)
 * [brew](http://brew.sh) (preferred package installer for mac)
 
-##Install via brew
+##Install tmux, ack, and vim
 
 Now install tools using brew. 
 
 * [tmux](http://tmux.sourceforge.net)
 * [ack](http://beyondgrep.com)
+* [vim](http://www.vim.org) (CLI vim and [MacVim](https://code.google.com/p/macvim/) GUI, pointing to same place)
 
 ```bash
-brew install tmux
-brew install ack
+$ brew update
+$ brew install tmux
+$ brew install ack
 ```
 
-* vim (CLI vim and MacVim GUI, pointing to same place)
-
 ```bash
-export PATH=/usr/local/bin:$PATH
-brew update
-brew install vim && brew install macvim
-brew link macvim
+$ export PATH=/usr/local/bin:$PATH
+$ brew install vim && brew install macvim
+$ brew link macvim
 ```
 
 ##Configure the shell, tmux, and vim
@@ -49,10 +48,10 @@ mkdir devtools && cd $_
 git clone https://github.com/chasdev/config-files.git
 cd ~
 # if you already have a .bash_profile, .vimrc, or .tmux.conf, please create a backup
-ln -s $HOME/devtools/config-files/.bash_profile .bash_profile
-ln -s $HOME/devtools/config-files/.tmux.conf .tmux.conf
-ln -s $HOME/devtools/config-files/.vimrc .vimrc
-ln -s $HOME/devtools/config-files config-files
+$ ln -s $HOME/devtools/config-files/.bash_profile .bash_profile
+$ ln -s $HOME/devtools/config-files/.tmux.conf .tmux.conf
+$ ln -s $HOME/devtools/config-files/.vimrc .vimrc
+$ ln -s $HOME/devtools/config-files config-files
 ```
 
 My vim configuration generally follows the advice found here: [Vim:revisted](http://mislav.uniqpath.com/2011/12/vim-revisited/). Previously I used [janus](https://github.com/carlhuda/janus) which is a very nice (and simple) installation. However, I've found it includes more than I want so have moved to storing a .vimrc in my config-files repository. (The .vimrc.before and .vimrc.after files used for a janus distribution are retained for now, but they are not used in this non-janus configuration. Conversely, if you intend to use janus and want to use my config-files, you should symlink the .vimrc.before and .vimrc.after files and NOT the .vimrc file as shown above.)
@@ -60,7 +59,7 @@ My vim configuration generally follows the advice found here: [Vim:revisted](htt
 First, install pathogen which will allow other plugins to be installed simply by cloning them
 
 ```bash
-mkdir -p ~/.vim/autoload ~/.vim/bundle; curl -Sso ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+$ mkdir -p ~/.vim/autoload ~/.vim/bundle; curl -Sso ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 ```
 
 As shown above, my '~/.vimrc' file was sym linked to a local repo cloned from GitHub (~/devtools/config-files'. IF you are using another .vimrc, the following minimal .vimrc can be created:
@@ -73,28 +72,27 @@ filetype plugin indent on
 
 Now install other plugins by cloning repos under a .vim-bundles directory. 
 
-* Install [Solarized](http://ethanschoonover.com/solarized/vim-colors-solarized)
-* Install [Command-T](git://git.wincent.com/command-t.git)  (Here are additional [instructions](https://github.com/wincent/Command-T/blob/master/doc/command-t.txt))
-* Install [ack](https://github.com/mileszs/ack.vim)
-* Install [sensible.vim](https://github.com/tpope/vim-sensible)
-* Install [easymotion](https://github.com/Lokaltog/vim-easymotion)
-* Install [SuperTab](git@github.com:ervandew/supertab.git) 
-* Install [tlib](https://github.com/tomtom/tlib_vim.git) (dependency for SnipMate)
-* Install [vim-addon-mv-utils](https://github.com/MarcWeber/vim-addon-mw-utils.git) (dependency for SnipMate)
-* Install [SnipMate](https://github.com/garbas/vim-snipmate.git)
-* Install [SnipMate](https://github.com/garbas/vim-snipmate.git)
-* Install [Solarized](git://github.com/altercation/vim-colors-solarized.git)
-* Install [Fugitive](git@github.com:tpope/vim-fugitive.git)
-* Install [Vim-Scala](git@github.com:derekwyatt/vim-scala.git)
-* Install [Vim-Snippets](git@github.com:honza/vim-snippets.git)
-* Install [ZoomWin](git@github.com:vits/ZoomWin.git) (Note: This is a fork as ver >24 is needed)
+* Install [Command-T](https://github.com/wincent/Command-T) - git clone git://git.wincent.com/command-t.git (Here are additional [instructions](https://github.com/wincent/Command-T/blob/master/doc/command-t.txt))
+* Install [ack](https://github.com/mileszs/ack.vim) - git clone git@github.com:mileszs/ack.vim.git
+* Install [sensible.vim](https://github.com/tpope/vim-sensible) - git clone git@github.com:tpope/vim-sensible.git
+* Install [easymotion](https://github.com/Lokaltog/vim-easymotion) - git clone git@github.com:Lokaltog/vim-easymotion.git
+* Install [SuperTab](https://github.com/ervandew/supertab) - git clone git@github.com:ervandew/supertab.git) 
+* Install [tlib](https://github.com/tomtom/tlib_vim.git) - git clone git@github.com:tomtom/tlib_vim.git (dependency for SnipMate)
+* Install [vim-addon-mv-utils](https://github.com/MarcWeber/vim-addon-mw-utils.git) (dependency for SnipMate) - git clone git@github.com:MarcWeber/vim-addon-mw-utils.git
+* Install [SnipMate](https://github.com/garbas/vim-snipmate.git) - git clone git@github.com:garbas/vim-snipmate.git
+* Install [Vim-Snippets](https://github.com/honza/vim-snippets) - git clone git@github.com:honza/vim-snippets.git (snippets used by SnipMate)
+* Install [Solarized](https://github.com/altercation/vim-colors-solarized) - git clone git://github.com/altercation/vim-colors-solarized.git
+* Install [Fugitive](https://github.com/tpope/vim-fugitive) - git clone git@github.com:tpope/vim-fugitive.git
+* Install [Vim-Scala](https://github.com/derekwyatt/vim-scala) - git clone git@github.com:derekwyatt/vim-scala.git
+* Install [ZoomWin](https://github.com/vits/ZoomWin) - git clone git@github.com:vits/ZoomWin.git (Note: This is a fork, as ver 25 or better is needed which has not been pushed to the main repo.)
+* Install [Node.vim](https://github.com/moll/vim-node) - git clone git@github.com:moll/vim-node.git
 
 Command-T requires a few more commands to be executed... 
 
 ```bash
-cd command-t/ruby/command-t
-ruby extconf.rb
-make
+$ cd command-t/ruby/command-t
+$ ruby extconf.rb
+$ make
 ```
 ##Install the JVM and Supporting Tools and Languages
 
@@ -103,21 +101,41 @@ From iTerm, try 'java -version'. This will bring up a popup with a link to downl
 Next, install [gvm](http://gvmtool.net) which we'll use to install and manage Groovy, Grails, Gradle, vert.x
 
 ```bash
-curl -s get.gvmtool.net | bash
-# Assuming the .bash_profile has been sym linked per above
+$ curl -s get.gvmtool.net | bash
+# Assuming the .bash_profile has been sym linked per above,
+# type: sbp (aka source bash profile)
 sbp
 # Otherwise, you'll need to 
-source "/Users/chardt/.gvm/bin/gvm-init.sh"
+$ source "$HOME/.gvm/bin/gvm-init.sh"
 #
-gvm install groovy
-gvm install grails
-gvm install gradle
-gvm install vertx
+$ gvm install groovy
+$ gvm install grails
+$ gvm install gradle
+$ gvm install vertx
 ```
 
-##Install Node.js
+##Install nvm and Node.js
 
-At the time of this writing in order to get 0.11.x which supports important Harmony features like 'generators', you need to download the installer from the [blog page](http://blog.nodejs.org). (This is because odd release versions are 'unstable'.)
+Use nvm to manage (potentially) multiple Node.js installations, akin to using gvm to manage multiple groovy and grails installations. 
+
+```
+$ git clone git://github.com/creationix/nvm.git ~/.nvm
+$ . ~/.nvm/nvm.sh
+$ nvm ls-remote
+$ nvm install 0.11.12
+```
+
+At the time of this writing in order to get 0.11.x which supports important Harmony features like 'generators'.  If you don't use nvm,  you'll need to download the installer from the [blog page](http://blog.nodejs.org). (This is because odd release versions are 'unstable'.)
+
+Install some global node packages.  
+
+* 'node-inspector' - allows debugging the server-side JavaScript within the Chrome Developer Tools graphical debugger. 
+* 'express-generator' - provides an executable t
+
+```
+$ npm install -g node-inspector
+$ npm install -g express-generator
+```
 
 ##Install Typesafe Activator (Play framework, Scala, Akka)
 
@@ -126,5 +144,19 @@ Download the Typesafe Activator from [here](http://typesafe.com/platform/getstar
 ##Install an IDE
 
 While I do not use an IDE for day-to-day development, occasionally it's nice to have the debugging capabilities.
+
+##Install Local Databases
+
+* [couchdb](http://couchdb.apache.org)
+* [mongodb](http://www.mongodb.org)
+* [MariaDB](https://mariadb.org)
+
+```
+brew update
+brew install couchdb
+brew install mongodb
+brew install mariadb
+```
+See [Installing MariaDB on Mac OS X using Homebrew](https://mariadb.com/kb/en/building-mariadb-on-mac-os-x-using-homebrew/)
 
 

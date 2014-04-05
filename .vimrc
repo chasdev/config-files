@@ -4,6 +4,16 @@ execute pathogen#infect('bundle/{}', '~/.vim-bundles/{}')
 syntax on
 filetype plugin indent on
 
+
+"" Use spaces for tabs, and set indent for file types
+autocmd Filetype groovy setlocal ts=4 sts=4 sw=4
+autocmd Filetype html setlocal ts=2 sts=2 sw=2
+autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+autocmd Filetype java setlocal ts=4 sts=4 sw=4
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+autocmd Filetype scala setlocal ts=4 sts=4 sw=4
+set expandtab
+
 set backupdir=~/tmp
 set noswapfile
 
@@ -13,8 +23,10 @@ let g:solarized_termtrans = 1
 set background=dark
 colorscheme solarized
 
+
 "" map leader-l to open previous (last) buffer
 nnoremap <leader>. <c-^>
+
 
 "" Simplify window navigation
 map <leader>j <C-W>j
@@ -22,16 +34,48 @@ map <leader>k <C-W>k
 map <leader>h <C-W>h
 map <leader>l <C-W>l
 
+
 " Simplify zooming - using ZoomWin version 25i
 " git@github.com:vits/ZoomWin.git  (ver 24 results in E3 File Exists errors)
 nmap <leader>z <c-w>o
+
 
 "" Show numbers, ,n to toggle relative numbering
 set number
 nnoremap <leader>n :set norelativenumber!<CR>
 
+
 "" Exclude directories from listings
 :set wildignore+=*.class,target/**,.git,.swp
+
+
+"" Comment lines (at beginning of lines) using leader-/ 
+"  (and leader-u to uncomment)
+function! Comment()
+  let ext = tolower(expand('%:e'))
+  if ext == 'php' || ext == 'rb' || ext == 'sh' || ext == 'py'
+    silent s/^/\#/
+  elseif ext == 'js' || ext == 'scala' || ext == 'java' || ext == 'groovy'
+    silent s:^:\/\/:g
+  elseif ext == 'vim'
+    silent s:^:\":g
+  endif
+endfunction
+ 
+function! Uncomment()
+  let ext = tolower(expand('%:e'))
+  if ext == 'php' || ext == 'rb' || ext == 'sh' || ext == 'py'
+    silent s/^\#//
+  elseif ext == 'js' || ext == 'scala' || ext == 'java' || ext == 'groovy'
+    silent s:^\/\/::g
+  elseif ext == 'vim'
+    silent s:^\"::g
+  endif
+endfunction
+ 
+map <leader>/ :call Comment()<CR>
+map <leader>u :call Uncomment()<CR>
+
 
 "" Support repeated pasting following a yank
 xnoremap p pgvy
@@ -51,6 +95,7 @@ set pastetoggle=<F2>
 " TODO: Paste incorrectly inserts a return before pasting
 "nmap <C-k> :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
 "imap <C-k> <Esc>:set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
+
 
 " ***************************  Groovy support  ***************************
 
