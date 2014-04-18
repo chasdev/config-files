@@ -2,18 +2,19 @@
 ## Tips and Cheats
 
 ### Miscellaneous Mac Tips
- 
-*Finder* 
+
+*Finder*
 To show hidden files and directories by:
 
 ```
  defaults write com.apple.Finder AppleShowAllFiles YES
 ```
 
-Then use option/right click hold, and choose option to 'relaunch' 
+Then use option/right click hold, and choose option to 'relaunch'
 To return to 'normal', reverse but switch YES to NO.
 
-Git must have proxy set in .bash_profile to get through firewall: 
+Git must have proxy set in .bash_profile to get through firewall:
+
 ```
 export http_proxy=www-proxy.xyz.com:8080
 ```
@@ -21,19 +22,23 @@ export http_proxy=www-proxy.xyz.com:8080
 #### bash command line basics:
 
 References:
+
 * [Sed - An intro and tutorial](http://www.grymoire.com/Unix/Sed.html)
 
-To create a gzip tar: 
+To create a gzip tar:
+
 ```
 tar -czf eventmgmt.tar.gz eventmgmt/
 ```
 
-To extract from a gzip tar: 
+To extract from a gzip tar:
+
 ```
 tar -xzf eventmgmt.tar.gz [optional_file_to_extract]
 ```
-                         
-To kill a process using it's pid file:  
+
+To kill a process using it's pid file:
+
 ```
 kill -9 `cat some_process.pid` (note back ticks are used)
 ```
@@ -48,7 +53,7 @@ To find processes that are listening:
 lsof -i -P | grep LISTEN
 ```
 
-To find a file:  
+To find a file:
 ```
 sudo find / -name "filename"
 ```
@@ -71,12 +76,12 @@ References:
 * [tmux shortcuts and cheatsheet](https://gist.github.com/MohamedAlaa/2961058)
 
 CTRL-a (default is CTRL-b) then:
-* d  = detach (exit back to normal terminal) and use normal vim keys 
+* d  = detach (exit back to normal terminal) and use normal vim keys
 * s  = create a new pane below the current one, resize with C-a Shift-J/K
 * \[ = this starts 'copy mode' which is scrollable (type q to exit copy mode)
 (or use trackpad to navigate and resize panes)
 
-#### MacVim / Vim 
+#### MacVim / Vim
 
 References:
 * [Janus](https://github.com/carlhuda/janus)
@@ -118,17 +123,17 @@ References:
 
 
 Commands:
-To remove highlights from current/last search:  
+To remove highlights from current/last search:
 ```
 :noh
 ```
 
-To replace a word:  
+To replace a word:
 ```
 %s/word/newword/g
 ```
 
-To replace a case-sensitive word: 
+To replace a case-sensitive word:
 ```
 :%s/word\C/newword/g
 ```
@@ -144,14 +149,14 @@ ctrl-V goes into visual mode, selecting columns - use esc esc to fill other colu
 To remove Windows line returns that show as ^M, use:
 ```
 :%s/^V^M//g
-``` 
+```
 
 (type this as :%s/CTRL-V-CTRL-M//g  (hold CTRL and type VM)k
 (note that it will appear as :%s/^M//g when displayed)
 
 To tag a project in order to use exuberant tags plugin:
 ```
-   ctags . 
+   ctags .
 ```
 
 To delete a file, use:
@@ -200,9 +205,9 @@ To ensure the remote tags are fetched:
 git fetch -t
 ```
 
-#### Brew 
+#### Brew
 
-If 'brew update' fails with conflicts, cd /usr/local which is a git directory, and stash or commit on a different branch, then re-try. 
+If 'brew update' fails with conflicts, cd /usr/local which is a git directory, and stash or commit on a different branch, then re-try.
 
 #### Couchdb
 
@@ -226,7 +231,32 @@ Or, if you don't want/need launchctl, you can just run:
     couchdb
 ```
 
-#### MongoDB 
+#### Redis
+
+```
+brew update
+brew install redis
+```
+
+To have launchd start redis at login:
+
+```
+    ln -sfv /usr/local/opt/redis/*.plist ~/Library/LaunchAgents
+```
+
+Then to load redis now:
+
+```
+    launchctl load ~/Library/LaunchAgents/homebrew.mxcl.redis.plist
+```
+
+Or, if you don't want/need launchctl, you can just run:
+
+```
+    redis-server /usr/local/etc/redis.conf
+```
+
+#### MongoDB
 
 Mongo Database
 

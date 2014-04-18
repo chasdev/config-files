@@ -4,6 +4,7 @@ execute pathogen#infect('bundle/{}', '~/.vim-bundles/{}')
 syntax on
 filetype plugin indent on
 
+au BufRead,BufNewFile *.md set filetype=markdown
 
 "" Use spaces for tabs, and set indent for file types
 autocmd Filetype groovy setlocal ts=4 sts=4 sw=4
@@ -12,6 +13,13 @@ autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 autocmd Filetype java setlocal ts=4 sts=4 sw=4
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype scala setlocal ts=4 sts=4 sw=4
+
+""autocmd BufWritePre *.py :%s/\s\+$//e
+autocmd FileType groovy,java,javascript,markdown autocmd FileWritePre    * :%s/\s\+$//e
+autocmd FileType groovy,java,javascript,markdown autocmd FileAppendPre   * :%s/\s\+$//e
+autocmd FileType groovy,java,javascript,markdown autocmd FilterWritePre  * :%s/\s\+$//e
+autocmd FileType groovy,java,javascript,markdown autocmd BufWritePre     * :%s/\s\+$//e
+
 set expandtab
 
 set backupdir=~/tmp
@@ -49,7 +57,7 @@ nnoremap <leader>n :set norelativenumber!<CR>
 :set wildignore+=*.class,target/**,.git,.swp
 
 
-"" Comment lines (at beginning of lines) using leader-/ 
+"" Comment lines (at beginning of lines) using leader-/
 "  (and leader-u to uncomment)
 function! Comment()
   let ext = tolower(expand('%:e'))
@@ -61,7 +69,7 @@ function! Comment()
     silent s:^:\":g
   endif
 endfunction
- 
+
 function! Uncomment()
   let ext = tolower(expand('%:e'))
   if ext == 'php' || ext == 'rb' || ext == 'sh' || ext == 'py'
@@ -72,7 +80,7 @@ function! Uncomment()
     silent s:^\"::g
   endif
 endfunction
- 
+
 map <leader>/ :call Comment()<CR>
 map <leader>u :call Uncomment()<CR>
 
