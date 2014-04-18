@@ -60,7 +60,7 @@ $ ln -s $HOME/devtools/config-files/.vimrc .vimrc
 $ ln -s $HOME/devtools/config-files config-files
 ```
 
-My vim configuration generally follows the advice found here: [Vim:revisted](http://mislav.uniqpath.com/2011/12/vim-revisited/). Previously I used [janus](https://github.com/carlhuda/janus) which is a very nice (and simple) installation. However, I've found it includes more than I want so have moved to using a simpler pathogen-based solution. 
+My vim configuration generally follows the advice found here: [Vim:revisted](http://mislav.uniqpath.com/2011/12/vim-revisited/). Previously I used [janus](https://github.com/carlhuda/janus) which is a very nice (and simple) installation. However, I've found it includes more than I want so have moved to using a simpler pathogen-based solution.
 
 First, install pathogen which will allow other plugins to be installed simply by cloning them
 
@@ -92,6 +92,7 @@ Now install other plugins by cloning repos under a .vim-bundles directory.
 * Install [Vim-Scala](https://github.com/derekwyatt/vim-scala) - git clone git@github.com:derekwyatt/vim-scala.git
 * Install [ZoomWin](https://github.com/vits/ZoomWin) - git clone git@github.com:vits/ZoomWin.git (Note: This is a fork, as ver 25 or better is needed which has not been pushed to the main repo.)
 * Install [Node.vim](https://github.com/moll/vim-node) - git clone git@github.com:moll/vim-node.git
+* Install [vim-airline](https://github.com/bling/vim-airline) - git clone git@github.com:bling/vim-airline.git
 
 Command-T requires a few more commands to be executed...
 
