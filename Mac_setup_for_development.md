@@ -78,7 +78,6 @@ filetype plugin indent on
 
 Now install other plugins by cloning repos under a .vim-bundles directory.
 
-* Install [Command-T](https://github.com/wincent/Command-T) - git clone git://git.wincent.com/command-t.git (Here are additional [instructions](https://github.com/wincent/Command-T/blob/master/doc/command-t.txt))
 * Install [ack](https://github.com/mileszs/ack.vim) - git clone git@github.com:mileszs/ack.vim.git
 * Install [sensible.vim](https://github.com/tpope/vim-sensible) - git clone git@github.com:tpope/vim-sensible.git
 * Install [easymotion](https://github.com/Lokaltog/vim-easymotion) - git clone git@github.com:Lokaltog/vim-easymotion.git
@@ -93,12 +92,12 @@ Now install other plugins by cloning repos under a .vim-bundles directory.
 * Install [ZoomWin](https://github.com/vits/ZoomWin) - git clone git@github.com:vits/ZoomWin.git (Note: This is a fork, as ver 25 or better is needed which has not been pushed to the main repo.)
 * Install [Node.vim](https://github.com/moll/vim-node) - git clone git@github.com:moll/vim-node.git
 * Install [vim-airline](https://github.com/bling/vim-airline) - git clone git@github.com:bling/vim-airline.git
+* Install [vimproc](https://github.com/Shougo/vimproc.vim) - git clone git@github.com:Shougo/vimproc.vim.git (Note: Prerequisite to Unite.vim)
+* Install [Unite](https://github.com/Shougo/unite.vim) - git clone git@github.com:Shougo/unite.vim.git
 
-Command-T requires a few more commands to be executed...
-
+vimproc requires a native extension to be built:
 ```bash
-$ cd command-t/ruby/command-t
-$ ruby extconf.rb
+$ cd ~/.vim-bundles/vimproc.vim
 $ make
 ```
 

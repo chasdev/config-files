@@ -32,7 +32,7 @@ set background=dark
 colorscheme solarized
 
 
-"" map leader-l to open previous (last) buffer
+"" map leader-. to open previous (last) buffer
 nnoremap <leader>. <c-^>
 
 
@@ -47,6 +47,15 @@ map <leader>l <C-W>l
 " git@github.com:vits/ZoomWin.git  (ver 24 results in E3 File Exists errors)
 nmap <leader>z <c-w>o
 
+
+"" Unite bindings (find files)
+" First, we'll make it easy to change the Unite prefix
+nnoremap [unite] <Nop>
+nmap <space> [unite]
+"
+" then use it to define a binding like Command-T
+map [unite]f :Unite -no-split -start-insert file_rec/async<cr>
+"nnoremap <leader>t :Unite file_rec/async<CR>
 
 "" Show numbers, ,n to toggle relative numbering
 set number
