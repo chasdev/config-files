@@ -94,6 +94,7 @@ Now install other plugins by cloning repos under a .vim-bundles directory.
 * Install [vim-airline](https://github.com/bling/vim-airline) - git clone git@github.com:bling/vim-airline.git
 * Install [vimproc](https://github.com/Shougo/vimproc.vim) - git clone git@github.com:Shougo/vimproc.vim.git (Note: Prerequisite to Unite.vim)
 * Install [Unite](https://github.com/Shougo/unite.vim) - git clone git@github.com:Shougo/unite.vim.git
+* Install [vim-multiple-cursors](https://github.com/terryma/vim-multiple-cursors) - git clone git@github.com:terryma/vim-multiple-cursors.git
 
 vimproc requires a native extension to be built:
 ```bash
