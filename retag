@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# Install ctags first! (On OS X use 'brew install ctags')
+#
+ctags -R --exclude=target --exclude=.git --exclude=log --exclude=tmp *
+

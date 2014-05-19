@@ -55,7 +55,9 @@ nmap <space> [unite]
 "
 " then use it to define a binding like Command-T
 map [unite]f :Unite -no-split -start-insert file_rec/async<cr>
-"nnoremap <leader>t :Unite file_rec/async<CR>
+map [unite]g :Unite -no-split grep:.<cr>
+map [unite]t :!retag<cr>:Unite -no-split -auto-preview -start-insert tag<cr>
+
 
 "" Show numbers, ,n to toggle relative numbering
 set number
