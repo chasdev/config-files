@@ -56,6 +56,7 @@ nmap <space> [unite]
 " then use it to define a binding like Command-T
 map [unite]f :Unite -no-split -start-insert file_rec/async<cr>
 map [unite]g :Unite -no-split grep:.<cr>
+map [unite]b :Unite -no-split buffer<cr>
 map [unite]t :!retag<cr>:Unite -no-split -auto-preview -start-insert tag<cr>
 
 
