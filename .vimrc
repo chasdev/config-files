@@ -60,6 +60,10 @@ map [unite]b :Unite -no-split buffer<cr>
 map [unite]t :!retag<cr>:Unite -no-split -auto-preview -start-insert tag<cr>
 
 
+"" Make netrw show a tree view by default
+let g:netrw_liststyle = 3
+let g:netrw_list_hide = '.git,tags,.sass-cache,.jpg,.png,.svg'
+
 "" Show numbers, ,n to toggle relative numbering
 set number
 nnoremap <leader>n :set norelativenumber!<CR>
