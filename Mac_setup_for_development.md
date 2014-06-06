@@ -103,6 +103,16 @@ $ cd ~/.vim-bundles/vimproc.vim
 $ make
 ```
 
+##Install mitmproxy (to intercept and modify HTTP traffic)
+
+Installation instructions: [http://mitmproxy.org/doc/install.html](http://mitmproxy.org/doc/install.html).  Also install a fast proxy switcher such as the 'SwitchySharp' chrome extension.
+
+To start mitmproxy on port 8888 use:
+
+```
+mitmproxy -p 8888
+```
+
 ##Install nvm and Node.js
 
 Use nvm to manage (potentially) multiple Node.js installations, akin to using gvm to manage multiple groovy and grails installations.

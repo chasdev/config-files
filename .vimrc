@@ -73,6 +73,9 @@ nnoremap <leader>n :set norelativenumber!<CR>
 :set wildignore+=*.class,target/**,.git,.swp
 
 
+"" Snippets (Snipmate) configuration
+"let g:snippets_dir = "~/.vim-bundles/my-snippets"
+
 "" Comment lines (at beginning of lines) using leader-/
 "  (and leader-u to uncomment)
 function! Comment()

@@ -1,6 +1,8 @@
 
 ## Tips and Cheats
 
+Many APIs are documented here: [http://devdocs.io/](http://devdocs.io/)
+
 ### Miscellaneous Mac Tips
 
 *Finder*
@@ -43,29 +45,55 @@ To kill a process using it's pid file:
 kill -9 `cat some_process.pid` (note back ticks are used)
 ```
 
+To list processes by name (e.g. node):
+
+```
+ps -ef | grep -i node
+```
+```
+pgrep -lf node
+```
+
+and to KILL the processes found with pgrep, use:
+
+```
+pkill -f node
+```
+
 To find a process using a port (e.g., 8080)
+
 ```
 lsof -i tcp:8080
 ```
 
 To find processes that are listening:
+
 ```
 lsof -i -P | grep LISTEN
 ```
 
 To find a file:
+
 ```
 sudo find / -name "filename"
 ```
 
 To find the size of a directory:
+
 ```
 du -h --max-depth=1 some_directory/
 ```
 
 To find number of files within a directory:
+
 ```
 ls some_directory/ | wc -l
+```
+
+To execute a command in each directory…  here doing so for immediate directories only...
+
+```
+find . -maxdepth 1 -type d -exec sh -c '(cd {} && COMMAND)' ';'
 ```
 
 #### Tmux
@@ -89,14 +117,11 @@ References:
 
 Install Solarized for both vim and iTerm2
 
-*NerdTree*
-<Leader> n  = toggles sidebar
-I (shift i) = shows hidden files in sidebar
-go          = previews file
-s           = opens new pane between sidebar and existing pane
-
-*BufferGator*
-<Leader> b = toggles buffer listing
+*Unite*
+<space>f list files with fuzzy search
+<space>b list buffers
+<space>g grep
+<space>t tags
 
 *EasyMotion*
 <Leader><Leader>fA = highlight 'finds' of 'A'
@@ -107,7 +132,6 @@ Ctrl-w o = zoom/unzoom a pane when using split panes
 *TagBar*
 <Leader>rt = toggle tagbar (CTAG tags of current file)
 
-*NERDcommenter*
 <Leader>/ = toggle commenting current line / select lines
 
 *Ack*
@@ -203,6 +227,18 @@ To ensure the remote tags are fetched:
 
 ```
 git fetch -t
+```
+
+##Using mitmproxy to intercept/modify HTTP traffic
+
+[mitmproxy](http://mitmproxy.org)
+[tutorial (intercept https traffic of phone)](http://blog.philippheckel.com/2013/07/01/how-to-use-mitmproxy-to-read-and-modify-https-traffic-of-your-phone/)
+
+To intercept HTTP requests, configure the browser to use localhost:8888 as a proxy.  (For chrome, install ‘SwitchySharp’ extension to easily switch proxies.)
+Then run:
+
+```
+mitmproxy -p 8888
 ```
 
 #### Brew

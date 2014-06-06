@@ -1,22 +1,22 @@
 [include]
   path = ~/.local.gitconfig
 [alias]
-	st = status -s
-	co = checkout
-	br = branch
-	d = difftool
+  st = status -s
+  co = checkout
+  br = branch
+  d = difftool
   m = mergetool
   l = log --graph --pretty=format':%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'
   lol = log --pretty=oneline --abbrev-commit --graph --decorate
-	pullall = pull && git submodule update --init --recursive
+  pullall = pull && git submodule update --init --recursive
   unstage = reset HEAD
   staged = diff --cached
   current-branch = !git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||'
-	undo = reset --soft HEAD^
+  undo = reset --soft HEAD^
 [core]
-	editor = vim -f
-	excludesfile = ~/.gitignore_global
-	autocrlf = false
+  editor = vim -f
+  excludesfile = ~/.gitignore_global
+  autocrlf = false
 [color]
   branch = auto
   diff = auto
@@ -35,21 +35,21 @@
   changed = green
   untracked = cyan
 [diff]
-	tool = Kaleidoscope
-	prompt = false
+  tool = Kaleidoscope
+  prompt = false
 [merge]
-	tool = Kaleidoscope
-	prompt = false
+  tool = Kaleidoscope
+  prompt = false
 [difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [mergetool "Kaleidoscope"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustExitCode = true
+  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+  trustExitCode = true
 [mergetool]
-	prompt = false
-	keepBackup = false
+  prompt = false
+  keepBackup = false
 [difftool "diffmerge"]
-	cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
+  cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
 [mergetool "diffmerge"]
-	cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
-	trustExitCode = true
+  cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
+  trustExitCode = true
