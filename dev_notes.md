@@ -118,7 +118,11 @@ References:
 Install Solarized for both vim and iTerm2
 
 *Unite*
+
 <space>f list files with fuzzy search
+    (NOTE: if list is missing files, CRTL-l (lower case L))
+    i  - toggles view style
+    gh - toggles showing hidden files
 <space>b list buffers
 <space>g grep
 <space>t tags

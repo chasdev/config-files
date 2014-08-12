@@ -1,5 +1,7 @@
 
 export PATH=/usr/local/bin:$HOME/bin:$PATH
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
 
 # -------------------------------------------------------------------------------
 #                                      Aliases

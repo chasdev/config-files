@@ -43,9 +43,11 @@ If you encounter a segmentation fault launching vim and use rvm to manage ruby v
 $ brew uninstall vim; rvm system; brew install vim
 ```
 
-##Configure the shell, tmux, and vim
+##Configure the zsh and bash shells, tmux, and vim
 
-Configure iterm to use [Solarized](http://ethanschoonover.com/solarized). Download Solarized (e.g., under ~/devtools/), unzip, and then in iTerm 'Preferences' select 'Profiles' and the 'Colors' tab, click the 'Load Presets' button, and 'import' the 'solarized/iterm2-colors-solarized/Solarized Dark.itermcolors', then make sure it is selected in iTerm.
+
+####Shell
+Configure iTerm to use [Solarized](http://ethanschoonover.com/solarized). Download Solarized (e.g., under ~/devtools/), unzip, and then in iTerm 'Preferences' select 'Profiles' and the 'Colors' tab, click the 'Load Presets' button, and 'import' the 'solarized/iterm2-colors-solarized/Solarized Dark.itermcolors', then make sure it is selected in iTerm.
 
 The next step is to configure the shell, tmux, and vim.  You should use whatever configuration settings you prefer.  I keep my configuration files in GitHub and so the following is specific to my setup. Others are welcome to use my configuration files (fork or borrow parts).
 
@@ -53,54 +55,98 @@ The next step is to configure the shell, tmux, and vim.  You should use whatever
 mkdir devtools && cd $_
 git clone https://github.com/chasdev/config-files.git
 cd ~
-# if you already have a .bash_profile, .vimrc, or .tmux.conf, please create a backup
+# if you already have a .bash_profile, .zshrc, .vimrc, or .tmux.conf, please create a backup
+$ ln -s $HOME/devtools/config-files/.zshrc .zshrc
 $ ln -s $HOME/devtools/config-files/.bash_profile .bash_profile
 $ ln -s $HOME/devtools/config-files/.tmux.conf .tmux.conf
 $ ln -s $HOME/devtools/config-files/.vimrc .vimrc
 $ ln -s $HOME/devtools/config-files config-files
 ```
 
-My vim configuration generally follows the advice found here: [Vim:revisted](http://mislav.uniqpath.com/2011/12/vim-revisited/). Previously I used [janus](https://github.com/carlhuda/janus) which is a very nice (and simple) installation. However, I've found it includes more than I want so have moved to using a simpler pathogen-based solution.
-
-First, install pathogen which will allow other plugins to be installed simply by cloning them
+To use zsh as your shell, install 'oh-my-zsh':
 
 ```bash
-$ mkdir -p ~/.vim/autoload ~/.vim/bundle; curl -Sso ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+curl -L github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
 ```
 
-As shown above, my '~/.vimrc' file was sym linked to a local repo cloned from GitHub (~/devtools/config-files'. IF you are using another .vimrc, the following minimal .vimrc can be created:
+####Vim
+
+Previously I used [janus](https://github.com/carlhuda/janus), and then later [pathogen](https://github.com/tpope/vim-pathogen) to manage vim plugins. My configuration now uses [Vundle](https://github.com/gmarik/Vundle.vim) which will allow other plugins to be installed simply by their inclusion in the .vimrc file.
+
+Vim step 1: install Vundle
+
+To use Vundle, we'll need to clone this into our .vim/bundle directory. All other plugins will be installed into the directory using Vundle, so this is the only one that needs to be done manually.
+
+```bash
+$ cd ~/.vim/bundle
+$ git clone https://github.com/gmarik/Vundle.vim.git
+```
+
+As discussed above, make sure '~/.vimrc' is sym linked to your local clone of this repository.
+
+Vim step 2: install plugins
+
+
+Review the plugins identified below, and remove/add plugins to the .vimrc file. For example, if you don't want support for Go (aka golang), just remove that plugin from the .vimrc file.  
+
+When you are ready, launch vim and run:
 
 ```
-execute pathogen#infect('bundle/{}', '~/.vim-bundles/{}')
-syntax on
-filetype plugin indent on
+:PluginInstall  
 ```
 
-Now install other plugins by cloning repos under a .vim-bundles directory.
+This will install the following plugins into the ~.vim/bundle directory. 
 
-* Install [ack](https://github.com/mileszs/ack.vim) - git clone git@github.com:mileszs/ack.vim.git
-* Install [sensible.vim](https://github.com/tpope/vim-sensible) - git clone git@github.com:tpope/vim-sensible.git
-* Install [easymotion](https://github.com/Lokaltog/vim-easymotion) - git clone git@github.com:Lokaltog/vim-easymotion.git
-* Install [SuperTab](https://github.com/ervandew/supertab) - git clone git@github.com:ervandew/supertab.git)
-* Install [tlib](https://github.com/tomtom/tlib_vim.git) - git clone git@github.com:tomtom/tlib_vim.git (dependency for SnipMate)
-* Install [vim-addon-mv-utils](https://github.com/MarcWeber/vim-addon-mw-utils.git) (dependency for SnipMate) - git clone git@github.com:MarcWeber/vim-addon-mw-utils.git
-* Install [SnipMate](https://github.com/garbas/vim-snipmate.git) - git clone git@github.com:garbas/vim-snipmate.git
-* Install [Vim-Snippets](https://github.com/honza/vim-snippets) - git clone git@github.com:honza/vim-snippets.git (snippets used by SnipMate)
-* Install [Solarized](https://github.com/altercation/vim-colors-solarized) - git clone git://github.com/altercation/vim-colors-solarized.git
-* Install [Fugitive](https://github.com/tpope/vim-fugitive) - git clone git@github.com:tpope/vim-fugitive.git
-* Install [Vim-Scala](https://github.com/derekwyatt/vim-scala) - git clone git@github.com:derekwyatt/vim-scala.git
-* Install [ZoomWin](https://github.com/vits/ZoomWin) - git clone git@github.com:vits/ZoomWin.git (Note: This is a fork, as ver 25 or better is needed which has not been pushed to the main repo.)
-* Install [Node.vim](https://github.com/moll/vim-node) - git clone git@github.com:moll/vim-node.git
-* Install [vim-airline](https://github.com/bling/vim-airline) - git clone git@github.com:bling/vim-airline.git
-* Install [vimproc](https://github.com/Shougo/vimproc.vim) - git clone git@github.com:Shougo/vimproc.vim.git (Note: Prerequisite to Unite.vim)
-* Install [Unite](https://github.com/Shougo/unite.vim) - git clone git@github.com:Shougo/unite.vim.git
-* Install [unite-tag](https://github.com/tsukkee/unite-tag) - git clone git@github.com:tsukkee/unite-tag.git
-* Install [vim-multiple-cursors](https://github.com/terryma/vim-multiple-cursors) - git clone git@github.com:terryma/vim-multiple-cursors.git
+* [ack](https://github.com/mileszs/ack.vim) 
+* [vim-easymotion](https://github.com/Lokaltog/vim-easymotion)
+* [YouCompleteMe](http://valloric.github.io/YouCompleteMe/)
+* [tlib](https://github.com/tomtom/tlib_vim.git) (dependency for SnipMate)
+* [vim-addon-mv-utils](https://github.com/MarcWeber/vim-addon-mw-utils.git) (dependency for SnipMate)
+* [vim-snipmate](https://github.com/garbas/vim-snipmate.git)
+* [vim-snippets](https://github.com/honza/vim-snippets) (snippets used by SnipMate)
+* [vim-colors-solarized](https://github.com/altercation/vim-colors-solarized)
+* [vim-fugitive](https://github.com/tpope/vim-fugitive)
+* [vim-scala](https://github.com/derekwyatt/vim-scala)
+* [ZoomWin](https://github.com/vits/ZoomWin) (Note: This is a fork, as ver 25 or better is needed which has not been pushed to the main repo.)
+* [vim-node](https://github.com/moll/vim-node)
+* [vim-airline](https://github.com/bling/vim-airline)
+* [vimproc](https://github.com/Shougo/vimproc.vim) (Note: Prerequisite to Unite.vim)
+* [unite](https://github.com/Shougo/unite.vim)
+* [unite-tag](https://github.com/tsukkee/unite-tag)
+* [vim-multiple-cursors](https://github.com/terryma/vim-multiple-cursors)
+* [Dockerfile](https://github.com/ekalinin/Dockerfile.vim)
+* [vim-go](https://github.com/fatih/vim-go)
+* [gundo](http://sjl.bitbucket.org/gundo.vim/)
+* [syntastic](https://github.com/scrooloose/syntastic)
+* [vim-commentary](https://github.com/tpope/vim-commentary)
+* [tabular](https://github.com/godlygeek/tabular) (needed for vim-markdown)
+* [vim-markdown](https://github.com/plasticboy/vim-markdown)
+* [vim-repeat](https://github.com/tpope/vim-repeat)
+* [vim-surround](https://github.com/tpope/vim-surround)
 
-vimproc requires a native extension to be built:
+When this is complete, read any messages and then exit vim.
+
+Vim step 3: Compile native extensions
+
+Two of the plugins ('vimproc' and 'YouCompleteMe') require native extensions to be built:
+
 ```bash
 $ cd ~/.vim-bundles/vimproc.vim
 $ make
+$ cd ~/.vim/bundle/YouCompleteMe
+$ ./install.sh
+```
+
+Vim step 4: Configure support for Go
+
+Also, you need to set the $GOPATH environment variable and install hg (mercurial) in addition to git, as the vim-go plugin will retrieve artifacts using both hg and git and install them into the GOPATH location. 
+
+The zsh-custom/custom.zsh file sets GOPATH to $HOME/working/gopath-default, so either create this directory or change the GOPATH environment variable. 
+
+To install mercurial, you can use brew:
+
+```
+$ brew install hg
 ```
 
 ##Install mitmproxy (to intercept and modify HTTP traffic)
@@ -144,6 +190,7 @@ Next, install [gvm](http://gvmtool.net) which we'll use to install and manage Gr
 
 ```bash
 $ curl -s get.gvmtool.net | bash
+
 # Assuming the .bash_profile has been sym linked per above,
 # type: sbp (aka source bash profile)
 sbp
