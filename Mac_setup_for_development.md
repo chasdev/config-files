@@ -51,6 +51,12 @@ Configure iTerm to use [Solarized](http://ethanschoonover.com/solarized). Downlo
 
 The next step is to configure the shell, tmux, and vim.  You should use whatever configuration settings you prefer.  I keep my configuration files in GitHub and so the following is specific to my setup. Others are welcome to use my configuration files (fork or borrow parts).
 
+To use zsh as your shell, install 'oh-my-zsh':
+
+```bash
+curl -L github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
+```
+
 ```bash
 mkdir devtools && cd $_
 git clone https://github.com/chasdev/config-files.git
@@ -61,12 +67,6 @@ $ ln -s $HOME/devtools/config-files/.bash_profile .bash_profile
 $ ln -s $HOME/devtools/config-files/.tmux.conf .tmux.conf
 $ ln -s $HOME/devtools/config-files/.vimrc .vimrc
 $ ln -s $HOME/devtools/config-files config-files
-```
-
-To use zsh as your shell, install 'oh-my-zsh':
-
-```bash
-curl -L github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
 ```
 
 ####Vim
@@ -255,7 +255,9 @@ brew cask install vagrant
 
 '[docker](https://www.docker.io)' may be used to manage 'lightweight containers' running within a Virtualbox VM.
 
-TODO: Add content regarding the use of docker. In the meantime, here is a really nice [write-up](https://github.com/relateiq/docker_public).
+Since docker requires a linux host, I run docker within an ubuntu VM (using [vagrant](http://www.vagrantup.com)). Alternatively, you could use  '[boot2docker](https://github.com/boot2docker/boot2docker)' or the Vagrant '[docker provider](https://docs.vagrantup.com/v2/docker/index.html)'  
+
+A Dockerfile for the zsh-vim-tmux development environment established above is available here: [https://github.com/chasdev/dev-env](https://github.com/chasdev/dev-env) (albeit it is subject to changes).
 
 ## Oracle
 

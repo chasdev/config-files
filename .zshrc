@@ -41,6 +41,9 @@ ZSH_THEME="robbyrussell"
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # HIST_STAMPS="mm/dd/yyyy"
 
+# Don't save repeated commands; don't save commands that start with a space
+export HISTIGNORE="&:[ ]*"
+
 # Would you like to use another custom folder than $ZSH/custom?
 ZSH_CUSTOM=$HOME/devtools/config-files/zsh-custom
 
@@ -54,18 +57,11 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="/Users/chardt/.gvm/vertx/current/bin:/Users/chardt/.gvm/springboot/current/bin:/Users/chardt/.gvm/lazybones/current/bin:/Users/chardt/.gvm/groovyserv/current/bin:/Users/chardt/.gvm/groovy/current/bin:/Users/chardt/.gvm/griffon/current/bin:/Users/chardt/.gvm/grails/current/bin:/Users/chardt/.gvm/gradle/current/bin:/Users/chardt/.gvm/gaiden/current/bin:/usr/local/bin:/Users/chardt/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin:/Users/chardt/go/bin"
+export PATH="$HOME/.gvm/vertx/current/bin:$HOME/.gvm/springboot/current/bin:$HOME/.gvm/lazybones/current/bin:$HOME/.gvm/groovyserv/current/bin:$HOME/.gvm/groovy/current/bin:$HOME/.gvm/griffon/current/bin:$HOME/.gvm/grails/current/bin:$HOME/.gvm/gradle/current/bin:$HOME/.gvm/gaiden/current/bin:/usr/local/bin:$HOME/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin:$HOME/go/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
