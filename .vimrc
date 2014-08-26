@@ -1,6 +1,8 @@
 set nocompatible
 filetype off                   " required!
 
+"" Vundle Managed Plugins
+"
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 let g:vundle_default_git_proto='git'
@@ -19,7 +21,7 @@ Plugin 'sjl/gundo.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'tomtom/tlib_vim'
 Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'garbas/vim-snipmate'
+Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'scrooloose/syntastic'
 Plugin 'terryma/vim-multiple-cursors'
@@ -30,29 +32,29 @@ Plugin 'tsukkee/unite-tag'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'fatih/vim-go'
 Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown' 
+Plugin 'plasticboy/vim-markdown'
 Plugin 'moll/vim-node'
 Plugin 'Gundo'
 
-call vundle#end()          
+call vundle#end()
 
 "" Use spaces for tabs, and set indent for file types
-"autocmd Filetype groovy setlocal ts=4 sts=4 sw=4
-"autocmd Filetype groovy setlocal ts=4 sts=4 sw=4
-"autocmd Filetype groovy setlocal ts=4 sts=4 sw=4
-"autocmd Filetype groovy setlocal ts=4 sts=4 sw=4
-"autocmd Filetype groovy setlocal ts=4 sts=4 sw=4
-"autocmd Filetype html setlocal ts=2 sts=2 sw=2
-"autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
-"autocmd Filetype java setlocal ts=4 sts=4 sw=4
-"autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
-"autocmd Filetype scala setlocal ts=4 sts=4 sw=4
+autocmd Filetype groovy setlocal ts=4 sts=4 sw=4
+autocmd Filetype groovy setlocal ts=4 sts=4 sw=4
+autocmd Filetype groovy setlocal ts=4 sts=4 sw=4
+autocmd Filetype groovy setlocal ts=4 sts=4 sw=4
+autocmd Filetype groovy setlocal ts=4 sts=4 sw=4
+autocmd Filetype html setlocal ts=2 sts=2 sw=2
+autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+autocmd Filetype java setlocal ts=4 sts=4 sw=4
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+autocmd Filetype scala setlocal ts=4 sts=4 sw=4
 
 ""autocmd BufWritePre *.py :%s/\s\+$//e
-"autocmd FileType groovy,java,javascript,markdown autocmd FileWritePre    * :%s/\s\+$//e
-"autocmd FileType groovy,java,javascript,markdown autocmd FileAppendPre   * :%s/\s\+$//e
-"autocmd FileType groovy,java,javascript,markdown autocmd FilterWritePre  * :%s/\s\+$//e
-"autocmd FileType groovy,java,javascript,markdown autocmd BufWritePre     * :%s/\s\+$//e
+autocmd FileType groovy,java,javascript,markdown autocmd FileWritePre    * :%s/\s\+$//e
+autocmd FileType groovy,java,javascript,markdown autocmd FileAppendPre   * :%s/\s\+$//e
+autocmd FileType groovy,java,javascript,markdown autocmd FilterWritePre  * :%s/\s\+$//e
+autocmd FileType groovy,java,javascript,markdown autocmd BufWritePre     * :%s/\s\+$//e
 
 let mapleader=","
 
@@ -79,11 +81,41 @@ let g:netrw_list_hide = '.git,tags,.sass-cache,.jpg,.png,.svg'
 set number
 nnoremap <leader>n :set norelativenumber!<CR>
 
+"" Snippets (ultisnips) configuration
+let g:UltiSnipsUsePythonVersion = 2
+let g:UltiSnipsSnippetsDir = "~/.vim/my-snippets"
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "my-snippets"]
+"let g:UltiSnipsExpandTrigger="<C-s>"
+"let g:UltiSnipsJumpForwardTrigger="<C-s>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
+" YouCompleteMe and UltiSnips conflict on 'tab'. The following function handles this.
+" credit: http://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme
+function! g:UltiSnips_Complete()
+    call UltiSnips#ExpandSnippet()
+    if g:ulti_expand_res == 0
+        if pumvisible()
+            return "\<C-n>"
+        else
+            call UltiSnips#JumpForwards()
+            if g:ulti_jump_forwards_res == 0
+               return "\<TAB>"
+            endif
+        endif
+    endif
+    return ""
+endfunction
 
+au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsListSnippets="<c-e>"
+" this mapping Enter key to <C-y> to chose the current highlight item 
+" and close the selection list, same as other IDEs.
+" CONFLICT with some plugins like tpope/Endwise
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" END 'handling of YCM and UltiSnips 'tab' conflict
 
-"" Snippets (Snipmate) configuration
-"let g:snippets_dir = "~/.vim-bundles/my-snippets"
 
 "" Support repeated pasting following a yank
 xnoremap p pgvy
@@ -170,7 +202,7 @@ set wrap                    " Wrap text
 set linebreak               " don't wrap textin the middle of a word
 set autoindent              " always set autoindenting on
 set smartindent             " use smart indent if there is no indent file
-set tabstop=4               " <tab> inserts 4 spaces 
+set tabstop=4               " <tab> inserts 4 spaces
 set shiftwidth=4            " but an indent level is 2 spaces wide.
 set softtabstop=4           " <BS> over an autoindent deletes both spaces.
 set expandtab               " Use spaces, not tabs, for autoindent/tab key.
@@ -180,7 +212,7 @@ set textwidth=80            " Lines are automatically wrapped after 80 columns
 
 """" Reading/Writing
 set autowrite               " Stop complaining about unsaved buffers
-set autowriteall            " 
+set autowriteall            "
 set noautoread              " Don't automatically re-read changed files.
 set modeline                " Allow vim options to be embedded in files;
 set modelines=5             " they must be within the first or last 5 lines.

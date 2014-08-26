@@ -67,6 +67,7 @@ $ ln -s $HOME/devtools/config-files/.bash_profile .bash_profile
 $ ln -s $HOME/devtools/config-files/.tmux.conf .tmux.conf
 $ ln -s $HOME/devtools/config-files/.vimrc .vimrc
 $ ln -s $HOME/devtools/config-files config-files
+$ ln -s $HOME/devtools/config-files/my-snippets .vim/my-snippets
 ```
 
 ####Vim
@@ -86,18 +87,17 @@ As discussed above, make sure '~/.vimrc' is sym linked to your local clone of th
 
 Vim step 2: install plugins
 
-
-Review the plugins identified below, and remove/add plugins to the .vimrc file. For example, if you don't want support for Go (aka golang), just remove that plugin from the .vimrc file.  
+Review the plugins identified below, and remove/add plugins to the .vimrc file. For example, if you don't want support for Go (aka golang), just remove that plugin from the .vimrc file.  Note that if you keep the vim-go plugin you will need to install Go (as discussed later in 'vim step 4').
 
 When you are ready, launch vim and run:
 
 ```
-:PluginInstall  
+:PluginInstall
 ```
 
-This will install the following plugins into the ~.vim/bundle directory. 
+This will install the following plugins into the ~.vim/bundle directory.
 
-* [ack](https://github.com/mileszs/ack.vim) 
+* [ack](https://github.com/mileszs/ack.vim)
 * [vim-easymotion](https://github.com/Lokaltog/vim-easymotion)
 * [YouCompleteMe](http://valloric.github.io/YouCompleteMe/)
 * [tlib](https://github.com/tomtom/tlib_vim.git) (dependency for SnipMate)
@@ -139,15 +139,11 @@ $ ./install.sh
 
 Vim step 4: Configure support for Go
 
-Also, you need to set the $GOPATH environment variable and install hg (mercurial) in addition to git, as the vim-go plugin will retrieve artifacts using both hg and git and install them into the GOPATH location. 
+You can install go using 'brew' or a [package installer](http://golang.org/doc/install#osx). Note my .zshrc expects the 'go' directory under the home directory, so if it's not either edit it or create a symlink (e.g., ln -s /usr/local/go go).
 
-The zsh-custom/custom.zsh file sets GOPATH to $HOME/working/gopath-default, so either create this directory or change the GOPATH environment variable. 
+You will need to install hg (mercurial) in addition to git, as the vim-go plugin will retrieve artifacts using both hg and git and install them into the GOPATH location.  To install mercurial, you can use a [package installer](http://mercurial.selenic.com/downloads). (Previously 'hg' was available via 'brew', so you may want to check that is supported.)
 
-To install mercurial, you can use brew:
-
-```
-$ brew install hg
-```
+Lastly, you will need to set the $GOPATH environment variable. The zsh-custom/custom.zsh file sets GOPATH to '$HOME/working/gopath-default', so either create this directory or change the GOPATH environment variable.
 
 ##Install mitmproxy (to intercept and modify HTTP traffic)
 
@@ -255,7 +251,7 @@ brew cask install vagrant
 
 '[docker](https://www.docker.io)' may be used to manage 'lightweight containers' running within a Virtualbox VM.
 
-Since docker requires a linux host, I run docker within an ubuntu VM (using [vagrant](http://www.vagrantup.com)). Alternatively, you could use  '[boot2docker](https://github.com/boot2docker/boot2docker)' or the Vagrant '[docker provider](https://docs.vagrantup.com/v2/docker/index.html)'  
+Since docker requires a linux host, I run docker within an ubuntu VM (using [vagrant](http://www.vagrantup.com)). Alternatively, you could use  '[boot2docker](https://github.com/boot2docker/boot2docker)' or the Vagrant '[docker provider](https://docs.vagrantup.com/v2/docker/index.html)'
 
 A Dockerfile for the zsh-vim-tmux development environment established above is available here: [https://github.com/chasdev/dev-env](https://github.com/chasdev/dev-env) (albeit it is subject to changes).
 

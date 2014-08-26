@@ -2,17 +2,20 @@
 
 snippet ase
 	assertEquals(${1:expected}, ${2:actual})${3}
+endsnippet
 
 ## Comments
 snippet /*
 	/*
 	 * ${0}
 	 */
+endsnippet
 
 snippet /**
 	/*
 	 * ${0}
 	 */
+endsnippet
 
 snippet for
 	for (${1}; ${2}; ${3}) ${0}
@@ -20,8 +23,11 @@ snippet forin
 	for (${1:element} in ${2:collection}) {
 	    ${3}
 	}
+endsnippet
+
 snippet wh
 	while (${1}) ${0}
+endsnippet
 
 # The below are from:  
 # https://github.com/wingyplus/snipmate.vim/blob/groovysnippets/snippets/groovy.snippets
@@ -29,18 +35,26 @@ snippet wh
 # hash bang: #!/usr/bin/env groovy
 snippet #!
 	#!/usr/bin/env groovy
+endsnippet
+
 snippet cla
 	class ${1:`Filename()`} {
 	    ${2}
 	}
+endsnippet
+
 snippet ci
 	class ${1:`Filename()`} implements ${2:Interface} {
 	    ${2}
 	}
+endsnippet
+
 snippet clx
 	class ${1:`Filename()`} extends ${2:Class} {
 	    ${2}
 	}
+endsnippet
+
 # unittest in groovy
 snippet tc
 	class ${1:`Filename()`} extends ${2:GroovyTestCase} {
@@ -53,13 +67,14 @@ snippet tc
 	        ${4}
 	    }
 	
-	
 	    void testSomething() {
 	
 	        fail("implement me")
 	
 	    }
 	}
+endsnippet
+
 # for spock unittest
 snippet spec
 	import spock.lang.Specification
@@ -70,91 +85,136 @@ snippet spec
 	        ${3}
 	    }
 	}
+endsnippet
+
 ## Create a Variable
 snippet v
 	${1:def} ${2:var}${3: = null}${4};
+endsnippet
+
 snippet main
 	static main(args) {
 	    ${1:// TODO: generate method stub}
 	}
+endsnippet
+
 snippet pl
 	println "${1}"
+endsnippet
+
 snippet if
 	if (${1}) {
 	    ${2}
 	}
+endsnippet
+
 snippet elif
 	else if (${1}) {
 	    ${2}
 	}
+endsnippet
+
 snippet el
 	else {
 	    ${1}
 	}
+endsnippet
+
 snippet sw
 	switch(${1:val}) {
 	    case ${2:val} :
 	        ${3:statement}
 	        break
 	}
+endsnippet
+
 snippet case
 	case ${1:val}: 
 	    ${2:statement}
 	    break
+endsnippet
+
 snippet clo
 	def ${1:closureName} = { ${2:var} ->
 	    ${3}
 	}
+endsnippet
+
 snippet mt
 	def ${1:methodName}(${2:args}) {
 	    ${3}
 	}
+endsnippet
+
 snippet var
 	def ${1:var} = ${2}
+endsnippet
+
 snippet each
 	${1:var}.each { ${2:var} ->
 	    ${3}
 	}
+endsnippet
+
 snippet times
 	${1:var}.each { ${2:var} ->
 	    ${3}
 	}
+endsnippet
+
 # metaClass
 snippet mc
 	${1:Class}.metaClass.${2:methodName} = { ${3:args} ->
 	    ${4}
 	}
+endsnippet
+
 # for grails web framework
 # redirect
 snippet red action
 	redirect(action: ${1:actionName})
+endsnippet
+
 snippet red controller&action
 	redirect(controller: ${1:controllerName}, action: ${2:actionName})
+endsnippet
+
 # render
 snippet rd text
 	render "${1}"
+endsnippet
+
 snippet rd view&model
 	render(view: "${1:viewName}", model: "${2:modelName}")
+endsnippet
+
 # render with contentType json
 snippet rd json
 	render(contentType: 'text/json') {
 	    ${1}
 	}
+endsnippet
+
 # render with contentType xml
 snippet rd xml
 	render(contentType: 'text/xml') {
 	    ${1}
 	}
+endsnippet
+
 # withCriteria
 snippet wc
 	${1:DomainClass}.withCriteria {
 	    ${3}
 	}
+endsnippet
+
 # withTransaction
 snippet wt
 	${1:DomainClass}.withTransaction { ${2:status} ->
 	    ${3}
 	}
+endsnippet
 
 
 ## THe below snippets modified from the Honza java.snippets file. 
@@ -163,66 +223,106 @@ snippet wt
 ## Access Modifiers
 snippet po
 	protected
+endsnippet
+
 snippet pu
 	public
+endsnippet
+
 snippet pr
 	private
+endsnippet
+
 ##
 ## Annotations
 snippet before
 	@Before
 	static void ${1:intercept}(${2:args}) { ${0} }
+endsnippet
+
 snippet mm
 	@ManyToMany
 	${0}
+endsnippet
+
 snippet mo
 	@ManyToOne
 	${0}
+endsnippet
+
 snippet om
 	@OneToMany${1:(cascade=CascadeType.ALL)}
 	${0}
+endsnippet
+
 snippet oo
 	@OneToOne
 	${1}
+endsnippet
+
 ##
 ## Basic Java packages and import
 snippet im
 	import
+endsnippet
+
 snippet j.b
 	java.beans.
+endsnippet
+
 snippet j.i
 	java.io.
+endsnippet
+
 snippet j.m
 	java.math.
+endsnippet
+
 snippet j.n
 	java.net.
+endsnippet
+
 snippet j.u
 	java.util.
-##
+endsnippet
+
 ## Class Enhancements
 snippet ext
 	extends
+endsnippet
+
 snippet imp
 	implements
-##
+endsnippet
+
 ##
 ## Constants
 snippet co
 	static public final ${1:String} ${2:var} = ${3};
+endsnippet
+
 snippet cos
 	static public final String ${1:var} = "${2}";
-##
+endsnippet
+
 ##
 ## Enhancements to Methods, variables, classes, etc.
 snippet ab
 	abstract
+endsnippet
+
 snippet fi
 	final
+endsnippet
+
 snippet st
 	static
+endsnippet
+
 snippet sy
 	synchronized
-##
+endsnippet
+
 ## Exception Handling
 snippet try
 	try {
@@ -230,6 +330,8 @@ snippet try
 	} catch(${1} ${2:e}) {
 	    ${3:handle}
 	}
+endsnippet
+
 snippet tryf
 	try {
 		${0}
@@ -240,42 +342,67 @@ snippet tryf
 	finally {
 	    ${4:final_stuff}
 	}
+endsnippet
+
 ##
 snippet @au
 	@author `system("grep \`id -un\` /etc/passwd | cut -d \":\" -f5 | cut -d \",\" -f1")`
+endsnippet
+
 snippet @pa
 	@param ${0:param}
+endsnippet
+
 snippet @re
 	@return ${0:param}
+endsnippet
+
 ##
 ## Logger Methods
 snippet debug
 	log.debug(${1:param});
+endsnippet
+
 snippet error
 	log.error(${1:param});
+endsnippet
+
 snippet info
 	log.info(${1:param});
+endsnippet
+
 snippet warn
 	log.warn(${1:param});
+endsnippet
+
 ##
 ## Main method
 snippet main
 	public static void main (String[] args) {
 		${0}
 	}
+endsnippet
+
 ## Setter and Getter Methods
 snippet set
 	${1:public} void set${3:}(${2:String} ${0:}){
 		this.$4 = $4;
 	}
+endsnippet
+
 snippet get
 	${1:public} ${2:String} get${3:}(){
 		return this.${0:};
 	}
+endsnippet
+
 ##
 ## Terminate Methods or Loops
 snippet re
 	return
+endsnippet
+
 snippet br
 	break;
-##
+endsnippet
+

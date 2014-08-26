@@ -1,0 +1,19 @@
+
+snippet newp "new Promise"
+let promise = new Promise(function(resolve, reject) {
+
+  ${1:do_something}
+
+  if (${2:if_successful}) {
+    resolve(${3:success_action});
+  }
+  else {
+    reject("Error("${4:error}"));
+  }
+});
+endsnippet
+
+snippet us
+"use strict";
+endsnippet
+
