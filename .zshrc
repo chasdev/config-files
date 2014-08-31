@@ -8,7 +8,7 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 
 # Include machine specific options 
-#source $HOME/.zshrc.include
+source $HOME/.zshrc.include
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -51,7 +51,7 @@ ZSH_CUSTOM=$HOME/devtools/config-files/zsh-custom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(common-aliases dirhistory docker encode64 git-extras jsontools npm osx sudo)
 
 source $ZSH/oh-my-zsh.sh
 

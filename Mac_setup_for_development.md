@@ -24,11 +24,13 @@ Now install tools using brew.
 * [tmux](http://tmux.sourceforge.net)
 * [ack](http://beyondgrep.com)
 * [vim](http://www.vim.org) (CLI vim and [MacVim](https://code.google.com/p/macvim/) GUI, pointing to same place)
+* [git-extras](https://github.com/visionmedia/git-extras)
 
 ```bash
 $ brew update
 $ brew install tmux
 $ brew install ack
+$ brew install git-extras
 ```
 
 ```bash

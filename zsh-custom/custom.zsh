@@ -1,9 +1,9 @@
 
 export GOPATH=$HOME/working/gopath-default
-
-# -------------------------------------------------------------------------------
+export DOCKER_HOST=tcp://192.168.59.103:2375
+ #-------------------------------------------------------------------------------
 #                                General Aliases  
-# -------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 alias bp='v ~/.bash_profile'
 alias sbp='source ~/.bash_profile'
 
@@ -25,6 +25,27 @@ export HISTSIZE=10000
 
 # navigation aliases
 poc=/Users/chardt/working/ar/jenga/poc/repos
+
+
+# -------------------------------------------------------------------------------
+#                                 Docker Support 
+# -------------------------------------------------------------------------------
+# Helpful blog post:
+# http://viget.com/extend/how-to-use-docker-on-os-x-the-missing-guide
+
+# returns the docker IP address e.g. usage: curl $(docker-ip):49153
+docker-ip() {
+  boot2docker ip 2> /dev/null
+}
+# Execute the following to create 'dockerhost'
+# echo $(docker-ip) dockerhost | sudo tee -a /etc/hosts
+
+# Allow docker-enter directly from OS X 
+# (without first ssh'ing into boot2docker VM)
+docker-enter() {
+  boot2docker ssh '[ -f /var/lib/boot2docker/nsenter ] || docker run --rm -v /var/lib/boot2docker/:/target jpetazzo/nsenter'
+  boot2docker ssh -t sudo /var/lib/boot2docker/docker-enter "$@"
+}
 
 # -------------------------------------------------------------------------------
 #                                  Tmux Aliases 
