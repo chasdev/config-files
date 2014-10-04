@@ -34,6 +34,7 @@ Plugin 'fatih/vim-go'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'moll/vim-node'
+Plugin 'digitaltoad/vim-jade'
 Plugin 'Gundo'
 
 call vundle#end()
@@ -136,7 +137,8 @@ set pastetoggle=<F2>
 "nmap <C-k> :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
 "imap <C-k> <Esc>:set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
 
-" sudo write this
+" sudo write for when we forget to use sudo to open/edit a file
+cmap w!! w !sudo tee % >/dev/null
 cmap W! w !sudo tee % >/dev/null
 
 " Reload Vimrc
@@ -145,9 +147,6 @@ map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimr
 " open/close the quickfix window
 nmap <leader>c :copen<CR>
 nmap <leader>cc :cclose<CR>
-
-" for when we forget to use sudo to open/edit a file
-cmap w!! w !sudo tee % >/dev/null
 
 " ctrl-jklm  changes to that split
 map <c-j> <c-w>j
@@ -268,6 +267,9 @@ if exists("+undofile")
 endif
 hi DiffText gui=underline guibg=red guifg=black
 set guifont=Monaco:h14
+
+" Syntastic support
+let g:syntastic_javascript_checkers = ['eslint']
 
 " ***************************  Groovy support  ***************************
 

@@ -146,9 +146,21 @@ Ctrl-i = goto Groovy class under cursor
 
 <Leader>h = Show all subclasses of class name under cursor as a quickfix list
 
+*Syntastic*
+The JavaScript checker is configured to be 'eslint' (which must be installed via npm) 
+
+Errors are shown in the gutter, and can also be viewed in the 'locations list'
+(akin to the 'quick list', albeit slightly different).
+
+To open the locations list, use:  :Errors
+To close the locations list:      :lclose
+
+*Commentary*
+To comment out the current line:  gcc
+To comment out a selection:       gc
+
 References:
 * [Using Marks](http://vim.wikia.com/wiki/Using_marks)
-
 
 Commands:
 To remove highlights from current/last search:
