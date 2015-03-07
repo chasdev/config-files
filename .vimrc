@@ -36,6 +36,7 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'moll/vim-node'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'Gundo'
+Plugin 'freitass/todo.txt-vim'
 
 call vundle#end()
 

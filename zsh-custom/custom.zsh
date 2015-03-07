@@ -68,10 +68,10 @@ fi
 # -------------------------------------------------------------------------------
 # Create alias to 'todo.sh', and configure bash completion to work with this alias
 if [ -f $HOME/devtools/config-files/todo.txt-cli/todo.sh ]; then
-  alias t="$HOME/devtools/config-files/todo.txt-cli/todo.sh -d ~/.todo.cfg"
+  alias t="$HOME/devtools/config-files/todo.txt-cli/todo.sh -d ~/devtools/config-files/todo.txt-cli/.todo.cfg"
 fi
 export TODOTXT_DEFAULT_ACTION=ls
-alias todotxt='subl ~/Dropbox/todos/todo.txt'
+alias todotxt='v ~/Dropbox/todos/todo.txt'
 alias todos='todotxt'
 
 # ---------------- ---- SHA1 -----------------------
@@ -95,7 +95,8 @@ alias gst='git st'
 # -------------------------------------------------------------------------------
 alias calc="open -a Calculator"
 alias saf="open -a Safari"
-alias marked="open -a Marked"
+alias marked="open -a 'Marked 2'"
+alias down="open -a MacDown"
 
 # -------------------------------------------------------------------------------
 #                                    Java

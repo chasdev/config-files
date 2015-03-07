@@ -56,8 +56,10 @@ plugins=(common-aliases dirhistory docker encode64 git-extras jsontools npm osx 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
 export PATH="$HOME/.gvm/vertx/current/bin:$HOME/.gvm/springboot/current/bin:$HOME/.gvm/lazybones/current/bin:$HOME/.gvm/groovyserv/current/bin:$HOME/.gvm/groovy/current/bin:$HOME/.gvm/griffon/current/bin:$HOME/.gvm/grails/current/bin:$HOME/.gvm/gradle/current/bin:$HOME/.gvm/gaiden/current/bin:/usr/local/bin:$HOME/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin:$HOME/go/bin"
+
+source $NVM_DIR/nvm.sh
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
