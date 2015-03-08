@@ -68,10 +68,10 @@ fi
 # -------------------------------------------------------------------------------
 # Create alias to 'todo.sh', and configure bash completion to work with this alias
 if [ -f $HOME/devtools/config-files/todo.txt-cli/todo.sh ]; then
-  alias t="$HOME/devtools/config-files/todo.txt-cli/todo.sh -d ~/devtools/config-files/todo.txt-cli/.todo.cfg"
+  alias t="$HOME/devtools/config-files/todo.txt-cli/todo.sh -d $HOME/devtools/config-files/todo.txt-cli/todo.cfg"
 fi
 export TODOTXT_DEFAULT_ACTION=ls
-alias todotxt='v ~/Dropbox/todos/todo.txt'
+alias todotxt='v $HOME/Dropbox/todos/todo.txt'
 alias todos='todotxt'
 
 # ---------------- ---- SHA1 -----------------------
