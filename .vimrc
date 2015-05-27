@@ -40,6 +40,8 @@ Plugin 'freitass/todo.txt-vim'
 
 call vundle#end()
 
+set encoding=utf-8
+
 "" Use spaces for tabs, and set indent for file types
 autocmd Filetype groovy setlocal ts=4 sts=4 sw=4
 autocmd Filetype groovy setlocal ts=4 sts=4 sw=4
@@ -112,12 +114,15 @@ endfunction
 au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsListSnippets="<c-e>"
-" this mapping Enter key to <C-y> to chose the current highlight item 
+" this mapping Enter key to <C-y> to chose the current highlight item
 " and close the selection list, same as other IDEs.
 " CONFLICT with some plugins like tpope/Endwise
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " END 'handling of YCM and UltiSnips 'tab' conflict
 
+" Remap jk or to be the same as Esc to leave Insert mode.
+inoremap jk <Esc>
+inoremap jj <Esc>
 
 "" Support repeated pasting following a yank
 xnoremap p pgvy
@@ -132,6 +137,9 @@ vmap <C-c> :w !pbcopy<CR><CR>
 " pastetoggle http://stackoverflow.com/questions/2861627/paste-in-insert-mode
 " set paste
 set pastetoggle=<F2>
+" Toggle paste mode on and off.
+" source: http://amix.dk/vim/vimrc.html
+map <leader>pp :setlocal paste!<cr>
 
 "" Paste from OS X clipboard using Ctrl-k
 " TODO: Paste incorrectly inserts a return before pasting
@@ -145,9 +153,10 @@ cmap W! w !sudo tee % >/dev/null
 " Reload Vimrc
 map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
-" open/close the quickfix window
-nmap <leader>c :copen<CR>
-nmap <leader>cc :cclose<CR>
+" Close/open quickfix/preview windows from anywhere.
+nnoremap <leader>qq :cclose<CR>
+nnoremap <leader>qp :pclose<CR>
+nnoremap <leader>qo :copen<CR>
 
 " ctrl-jklm  changes to that split
 map <c-j> <c-w>j
@@ -172,10 +181,11 @@ set number                    " Display line numbers
 set background=dark           " We are using dark background in vim
 set title                     " show title in console title bar
 set wildmenu                  " Menu completion in command mode on <Tab>
-set wildmode=full             " <Tab> cycles between all matching choices.
+set wildmode=longest:full,full             " <Tab> cycles between all matching choices.
 
 " don't bell or blink
 set noerrorbells
+set novisualbell
 set vb t_vb=
 
 " Ignore these files when completing
@@ -189,6 +199,12 @@ nnoremap <leader>. :lcd %:p:h<CR>
 "autocmd FileType * setlocal colorcolumn=0
 
 let g:vim_markdown_folding_disabled=1
+
+" Custom Fugitive shortcuts
+noremap <leader>gs :Gstatus <CR>
+noremap <leader>gc :Gcommit <CR>
+noremap <leader>gd :Gdiff <CR>
+noremap <leader>gb :Gblame <CR>
 
 """ Moving Around/Editing
 set cursorline              " have a line indicate the cursor location
@@ -238,8 +254,8 @@ map <leader>p "+p
 " Quit window on <leader>q
 nnoremap <leader>q :q<CR>
 
-" hide matches on <leader>space
-nnoremap <leader><space> :nohlsearch<cr>
+" bind \ to clear highlighting, though search term remains and 'n' works
+noremap <silent> \ :silent nohlsearch<CR>
 
 " Remove trailing whitespace on <leader>S
 nnoremap <leader>S :%s/\s\+$//<cr>:let @/=''<CR>
@@ -250,6 +266,9 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 map <C-space> :bn <CR>
 map <C-M-space> :bp <CR>
 
+" let g:zenburn_high_Contrast=1
+" colorscheme zenburn
+let g:solarized_termcolors=256
 colorscheme solarized
 set background=dark
 
@@ -271,6 +290,9 @@ set guifont=Monaco:h14
 
 " Syntastic support
 let g:syntastic_javascript_checkers = ['eslint']
+
+" Toggle TagBar. I don't use it a lot, but it's helpful.
+nnoremap <leader>t :TagbarToggle<CR>
 
 " ***************************  Groovy support  ***************************
 

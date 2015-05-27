@@ -31,21 +31,21 @@ poc=/Users/chardt/working/ar/jenga/poc/repos
 #                                 Docker Support 
 # -------------------------------------------------------------------------------
 # Helpful blog post:
-# http://viget.com/extend/how-to-use-docker-on-os-x-the-missing-guide
+# http://docs.docker.com/installation/mac/
+# http://www.centurylinklabs.com/cloud-coding-docker-remote-pairing/
 
-# returns the docker IP address e.g. usage: curl $(docker-ip):49153
+eval "$(boot2docker shellinit)"
+
 docker-ip() {
   boot2docker ip 2> /dev/null
 }
-# Execute the following to create 'dockerhost'
-# echo $(docker-ip) dockerhost | sudo tee -a /etc/hosts
 
-# Allow docker-enter directly from OS X 
-# (without first ssh'ing into boot2docker VM)
-docker-enter() {
-  boot2docker ssh '[ -f /var/lib/boot2docker/nsenter ] || docker run --rm -v /var/lib/boot2docker/:/target jpetazzo/nsenter'
-  boot2docker ssh -t sudo /var/lib/boot2docker/docker-enter "$@"
-}
+# for i in {49000..49900}; do
+#   VBoxManage modifyvm "boot2docker-vm" --natpf1 "tcp-port$i,tcp,,$i,,$i";
+#   VBoxManage modifyvm "boot2docker-vm" --natpf1 "udp-port$i,udp,,$i,,$i";
+# done
+
+
 
 # -------------------------------------------------------------------------------
 #                                  Tmux Aliases 
