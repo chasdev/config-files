@@ -267,9 +267,9 @@ map <C-space> :bn <CR>
 map <C-M-space> :bp <CR>
 
 " let g:zenburn_high_Contrast=1
-" colorscheme zenburn
-let g:solarized_termcolors=256
-colorscheme solarized
+" silent! colorscheme zenburn
+" let g:solarized_termcolors=256
+silent! colorscheme solarized
 set background=dark
 
 set noswapfile
