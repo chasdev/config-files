@@ -53,3 +53,8 @@
 [mergetool "diffmerge"]
   cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
   trustExitCode = true
+[gitty "integ"]
+	test = 1461074244667
+[user]
+	name = artifact-service
+	email = artifact-service@ellucian.com

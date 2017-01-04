@@ -3,6 +3,8 @@ export PATH=/usr/local/bin:$HOME/bin:$PATH
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
+source .nvm/nvm.sh
+
 # -------------------------------------------------------------------------------
 #                                      Aliases
 # -------------------------------------------------------------------------------
@@ -308,3 +310,7 @@ if [ -f $HOME/.gvm/bin/gvm-init.sh ]; then
   [[ -s "$HOME/.gvm/bin/gvm-init.sh" && -z $(which gvm-init.sh | grep '/gvm-init.sh') ]] && source "$HOME/.gvm/bin/gvm-init.sh"
 fi
 
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/chardt/.sdkman"
+[[ -s "/Users/chardt/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/chardt/.sdkman/bin/sdkman-init.sh"

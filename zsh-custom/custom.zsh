@@ -1,8 +1,11 @@
 
+export TNS_ADMIN=$HOME/devtools/sqlplus-connection
 export GOPATH=$HOME/working/gopath-default
-export DOCKER_HOST=tcp://192.168.59.103:2375
- #-------------------------------------------------------------------------------
-#                                General Aliases  
+
+export VISUAL=vim
+
+#-------------------------------------------------------------------------------
+#                                General Aliases
 # ------------------------------------------------------------------------------
 alias bp='v ~/.bash_profile'
 alias sbp='source ~/.bash_profile'
@@ -12,8 +15,11 @@ alias hosts='sudo v /etc/hosts'
 # Flush the DNS -- sometimes helpful after connecting to or disconnecting from VPN
 alias flushdns="dscacheutil -flushcache"
 
-alias v='vim' 
+alias v='vim'
 alias devnotes="v ~/devtools/config-files/dev_notes.md"
+
+# run 'portainer' UI for Docker
+alias dockerui="docker run -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer"
 
 # Don't save repeated commands; don't save commands that start with a space
 export HISTIGNORE="&:[ ]*"
@@ -24,31 +30,38 @@ export HISTSIZE=10000
 #shopt -s histappend
 
 # navigation aliases
-poc=/Users/chardt/working/ar/jenga/poc/repos
-
+alias repos="cd ~/working/ar/platform/repos"
 
 # -------------------------------------------------------------------------------
-#                                 Docker Support 
+#                               AWS Credentials Support
 # -------------------------------------------------------------------------------
-# Helpful blog post:
-# http://docs.docker.com/installation/mac/
-# http://www.centurylinklabs.com/cloud-coding-docker-remote-pairing/
-
-eval "$(boot2docker shellinit)"
-
-docker-ip() {
-  boot2docker ip 2> /dev/null
+# The 'sts' executable (written by Shane in Go) is used to interact with Okta
+# using normal domain credentials, and creates a 'setaws' that needs to be
+# sourced.  Note the sts exec also needs the accounts.yml file. The exec and the
+# yml file are in ~/bin, and the aws credentials file is in ~/.aws (and this is
+# updated with SAML info by sts).
+#
+# This function executes sts and then sources the setaws file (which creates the
+# normal AWS credential environment variables needed by the aws-sdk)
+#
+function sts() {
+  ~/bin/sts $@ --outputDir=/Users/chardt/bin && source /Users/chardt/bin/setaws
 }
 
-# for i in {49000..49900}; do
-#   VBoxManage modifyvm "boot2docker-vm" --natpf1 "tcp-port$i,tcp,,$i,,$i";
-#   VBoxManage modifyvm "boot2docker-vm" --natpf1 "udp-port$i,udp,,$i,,$i";
-# done
+# ------------------------------------------------------------------------------
+#                                  iTerm2 Banner
+# ------------------------------------------------------------------------------
+function setdesc() {
+  eval `export shellName=$1`
+}
 
-
+iterm2_print_user_vars() {
+  iterm2_set_user_var gitBranch $((git branch 2> /dev/null) | grep \* | cut -c3-)
+  iterm2_set_user_var shellName=$1
+}
 
 # -------------------------------------------------------------------------------
-#                                  Tmux Aliases 
+#                                  Tmux Aliases
 # -------------------------------------------------------------------------------
 alias ta='tmux a -t'
 alias tn='tmux new -s'
@@ -91,7 +104,7 @@ alias gl='git l'
 alias gst='git st'
 
 # -------------------------------------------------------------------------------
-#                                  Mac OS X apps 
+#                                  Mac OS X apps
 # -------------------------------------------------------------------------------
 alias calc="open -a Calculator"
 alias saf="open -a Safari"
