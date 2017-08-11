@@ -1,329 +1,292 @@
+call plug#begin('~/.vim/plugged')
+
+" Syntax and language specific
+Plug 'tpope/vim-git'
+Plug 'vim-ruby/vim-ruby'
+Plug 'othree/html5.vim'
+Plug 'leshill/vim-json'
+Plug 'tpope/vim-markdown'
+Plug 'ElmCast/elm-vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript', { 'for': 'typescript' }
+Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
+Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
+Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
+
+" Actual Plugs
+Plug 'easymotion/vim-easymotion'
+Plug 'vimlab/split-term.vim'
+Plug 'tpope/vim-surround'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'tpope/vim-rbenv'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-repeat'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'rking/ag.vim'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-ragtag'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'gorkunov/smartpairs.vim'
+Plug 'thinca/vim-visualstar'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'w0rp/ale'
+Plug 'tpope/vim-vinegar'
+Plug 'Shougo/neosnippet.vim'
+Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
+Plug 'janko-m/vim-test'
+Plug 'tpope/vim-endwise'
+Plug 'mattn/emmet-vim'
+
+call plug#end()
+
 set nocompatible
-filetype off                   " required!
 
-"" Vundle Managed Plugins
-"
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-let g:vundle_default_git_proto='git'
-let g:ycm_server_keep_logfiles = 1
-let g:ycm_server_log_level = 'debug'
+let g:neosnippet#disable_runtime_snippets = {
+\   '_' : 1,
+\ }
 
-Plugin 'gmarik/vundle'
-Plugin 'vim-airline'
-Plugin 'mileszs/ack.vim'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-surround'
-Plugin 'sjl/gundo.vim'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'tomtom/tlib_vim'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'scrooloose/syntastic'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'Shougo/vimproc.vim'
-Plugin 'Shougo/unite.vim'
-Plugin 'tsukkee/unite-tag'
-Plugin 'ekalinin/Dockerfile.vim'
-" Plugin 'fatih/vim-go'
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'moll/vim-node'
-Plugin 'digitaltoad/vim-jade'
-Plugin 'Gundo'
-Plugin 'freitass/todo.txt-vim'
 
-call vundle#end()
+let g:jsx_ext_required = 0
 
-set encoding=utf-8
+"Add extra filetypes
+let g:tern#filetypes = [
+\ 'jsx',
+\ 'javascript.jsx',
+\ ]
 
-"" Use spaces for tabs, and set indent for file types
-autocmd Filetype groovy setlocal ts=4 sts=4 sw=4
-autocmd Filetype groovy setlocal ts=4 sts=4 sw=4
-autocmd Filetype groovy setlocal ts=4 sts=4 sw=4
-autocmd Filetype groovy setlocal ts=4 sts=4 sw=4
-autocmd Filetype groovy setlocal ts=4 sts=4 sw=4
-autocmd Filetype html setlocal ts=2 sts=2 sw=2
-autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
-autocmd Filetype java setlocal ts=4 sts=4 sw=4
-autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
-autocmd Filetype scala setlocal ts=4 sts=4 sw=4
+filetype plugin indent on
 
-""autocmd BufWritePre *.py :%s/\s\+$//e
-autocmd FileType groovy,java,javascript,markdown autocmd FileWritePre    * :%s/\s\+$//e
-autocmd FileType groovy,java,javascript,markdown autocmd FileAppendPre   * :%s/\s\+$//e
-autocmd FileType groovy,java,javascript,markdown autocmd FilterWritePre  * :%s/\s\+$//e
-autocmd FileType groovy,java,javascript,markdown autocmd BufWritePre     * :%s/\s\+$//e
+let g:neosnippet#snippets_directory = '~/.config/nvim/UltiSnips'
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
 
-let mapleader=","
+let g:tsuquyomi_disable_default_mappings = 1
 
-" Simplify zooming - using ZoomWin version 25i
-" git@github.com:vits/ZoomWin.git  (ver 24 results in E3 File Exists errors)
-nmap <leader>z <c-w>o
+" automatically rebalance windows on vim resize
+autocmd VimResized * :wincmd =
 
-"" Unite bindings (find files)
-" First, we'll make it easy to change the Unite prefix
-nnoremap [unite] <Nop>
-nmap <space> [unite]
+set shiftround
+set noshowcmd
+set nofoldenable
+map K <Nop>
 
-" then use it to define a binding like Command-T
-map [unite]f :Unite -no-split -start-insert file_rec/async<cr>
-map [unite]g :Unite -no-split grep:.<cr>
-map [unite]b :Unite -no-split buffer<cr>
-map [unite]t :!retag<cr>:Unite -no-split -auto-preview -start-insert tag<cr>
+" CHARLIE - Re-enable following line
+"set inccommand=split
 
-"" Make netrw show a tree view by default
-let g:netrw_liststyle = 3
-let g:netrw_list_hide = '.git,tags,.sass-cache,.jpg,.png,.svg'
-
-"" Show numbers using ,n to toggle relative numbering
-set number
-nnoremap <leader>n :set norelativenumber!<CR>
-
-"" Snippets (ultisnips) configuration
-let g:UltiSnipsUsePythonVersion = 2
-let g:UltiSnipsSnippetsDir = "~/.vim/my-snippets"
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "my-snippets"]
-"let g:UltiSnipsExpandTrigger="<C-s>"
-"let g:UltiSnipsJumpForwardTrigger="<C-s>"
-"let g:UltiSnipsJumpForwardTrigger="<c-b>"
-"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" YouCompleteMe and UltiSnips conflict on 'tab'. The following function handles this.
-" credit: http://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme
-function! g:UltiSnips_Complete()
-    call UltiSnips#ExpandSnippet()
-    if g:ulti_expand_res == 0
-        if pumvisible()
-            return "\<C-n>"
-        else
-            call UltiSnips#JumpForwards()
-            if g:ulti_jump_forwards_res == 0
-               return "\<TAB>"
-            endif
-        endif
-    endif
-    return ""
-endfunction
-
-au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsListSnippets="<c-e>"
-" this mapping Enter key to <C-y> to chose the current highlight item
-" and close the selection list, same as other IDEs.
-" CONFLICT with some plugins like tpope/Endwise
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-" END 'handling of YCM and UltiSnips 'tab' conflict
-
-" Remap jk or to be the same as Esc to leave Insert mode.
-inoremap jk <Esc>
-inoremap jj <Esc>
-
-"" Support repeated pasting following a yank
-xnoremap p pgvy
-xnoremap P Pgvy
-
-"" Copy to OS X clipboard usig Ctrl-x and Ctrl-c as normal"
-" TODO: Copy grabs entire line versus just the selection
-vmap <C-x> :!pbcopy<CR>
-vmap <C-c> :w !pbcopy<CR><CR>
-
-"" Toggle paste
-" pastetoggle http://stackoverflow.com/questions/2861627/paste-in-insert-mode
-" set paste
-set pastetoggle=<F2>
-" Toggle paste mode on and off.
-" source: http://amix.dk/vim/vimrc.html
-map <leader>pp :setlocal paste!<cr>
-
-"" Paste from OS X clipboard using Ctrl-k
-" TODO: Paste incorrectly inserts a return before pasting
-"nmap <C-k> :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
-"imap <C-k> <Esc>:set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
-
-" sudo write for when we forget to use sudo to open/edit a file
-cmap w!! w !sudo tee % >/dev/null
-cmap W! w !sudo tee % >/dev/null
-
-" Reload Vimrc
-map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
-
-" Close/open quickfix/preview windows from anywhere.
-nnoremap <leader>qq :cclose<CR>
-nnoremap <leader>qp :pclose<CR>
-nnoremap <leader>qo :copen<CR>
-
-" ctrl-jklm  changes to that split
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-map <c-l> <c-w>l
-map <c-h> <c-w>h
-
-" and lets make these all work in insert mode too ( <C-O> makes next cmd
-"  happen as if in command mode )
-imap <C-W> <C-O><C-W>
-
-" Load the Gundo window
-map <leader>g :GundoToggle<CR>
-
-" ==========================================================
-" Basic Settings
-" ==========================================================
-syntax on                     " syntax highlighing
-filetype on                   " try to detect filetypes
-filetype plugin indent on     " enable loading indent file for filetype
-set number                    " Display line numbers
-set background=dark           " We are using dark background in vim
-set title                     " show title in console title bar
-set wildmenu                  " Menu completion in command mode on <Tab>
-set wildmode=longest:full,full             " <Tab> cycles between all matching choices.
-
-" don't bell or blink
-set noerrorbells
-set novisualbell
-set vb t_vb=
-
-" Ignore these files when completing
-set wildignore+=*.o,*.obj,*.pyc,*.class,target/**,.git,.swp
-
-" Set working directory
-nnoremap <leader>. :lcd %:p:h<CR>
-
-" Disable the colorcolumn when switching modes.  Make sure this is the
-" first autocmd for the filetype here
-"autocmd FileType * setlocal colorcolumn=0
-
-let g:vim_markdown_folding_disabled=1
-
-" Custom Fugitive shortcuts
-noremap <leader>gs :Gstatus <CR>
-noremap <leader>gc :Gcommit <CR>
-noremap <leader>gd :Gdiff <CR>
-noremap <leader>gb :Gblame <CR>
-
-""" Moving Around/Editing
-set cursorline              " have a line indicate the cursor location
-set ruler                   " show the cursor position all the time
-set nostartofline           " Avoid moving cursor to BOL when jumping around
-set virtualedit=block       " Let cursor move past the last char in <C-v> mode
-set scrolloff=3             " Keep 3 context lines above and below the cursor
-set backspace=2             " Allow backspacing over autoindent, EOL, and BOL
-set showmatch               " Briefly jump to a paren once it's balanced
-set wrap                    " Wrap text
-set linebreak               " don't wrap textin the middle of a word
-set autoindent              " always set autoindenting on
-set smartindent             " use smart indent if there is no indent file
-set tabstop=4               " <tab> inserts 4 spaces
-set shiftwidth=4            " but an indent level is 2 spaces wide.
-set softtabstop=4           " <BS> over an autoindent deletes both spaces.
-set expandtab               " Use spaces, not tabs, for autoindent/tab key.
-set shiftround              " rounds indent to a multiple of shiftwidth
-set formatoptions=tcroql    " Setting text and comment formatting to auto
-set textwidth=80            " Lines are automatically wrapped after 80 columns
-
-"""" Reading/Writing
-set autowrite               " Stop complaining about unsaved buffers
-set autowriteall            "
-set noautoread              " Don't automatically re-read changed files.
-set modeline                " Allow vim options to be embedded in files;
-set modelines=5             " they must be within the first or last 5 lines.
-
-"""" Messages, Info, Status
-set ls=2                    " allways show status line
-set vb t_vb=                " Disable all bells.  I hate ringing/flashing.
-set showcmd                 " Show incomplete normal mode commands as I type.
-set report=0                " : commands always print changed line count.
-set shortmess+=a            " Use [+]/[RO]/[w] for modified/readonly/written.
-set ruler                   " Show some info, even without statuslines.
-set laststatus=2            " Always show statusline, even if only 1 window.
-
-""" Searching and Patterns
-set ignorecase              " Default to using case insensitive searches,
-set smartcase               " unless uppercase letters are used in the regex.
-set hlsearch                " Highlight searches by default.
-set incsearch               " Incrementally search while typing a /regex
-
-" Paste from clipboard
-map <leader>p "+p
-
-" Quit window on <leader>q
-nnoremap <leader>q :q<CR>
-
-" bind \ to clear highlighting, though search term remains and 'n' works
-noremap <silent> \ :silent nohlsearch<CR>
-
-" Remove trailing whitespace on <leader>S
-nnoremap <leader>S :%s/\s\+$//<cr>:let @/=''<CR>
-
-" Select the item in the list with enter
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-map <C-space> :bn <CR>
-map <C-M-space> :bp <CR>
-
-" let g:zenburn_high_Contrast=1
-" silent! colorscheme zenburn
-" let g:solarized_termcolors=256
-silent! colorscheme solarized
 set background=dark
 
+runtime macros/matchit.vim
+
+" wrap quickfix window
+autocmd FileType qf setlocal wrap linebreak
+
+autocmd BufNewFile,BufRead .babelrc setlocal filetype=json
+autocmd BufNewFile,BufRead .eslintrc setlocal filetype=json
+
+function! SyntaxItem()
+  echo synIDattr(synID(line("."),col("."),1),"name")
+endfunction
+
+" Ale status line - last empty string = no message when everything is OK
+let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '']
+
+" status bar
+set statusline=%F%m%r%h%w\  "fullpath and status modified sign
+set statusline+=\ %y "filetype
+set statusline+=\ %{fugitive#statusline()}
+set statusline+=\ %{ALEGetStatusLine()}
+" this line below pushes everything below it to the right hand side
+set statusline+=%=
+set statusline+=\%l
+
+" assume the /g flag on :s substitutions to replace all matches in a line
+set gdefault
+
+set autoread
+
+set breakindent
+
+" fix slight delay after pressing ESC then O http://ksjoberg.com/vim-esckeys.html
+set timeout timeoutlen=500 ttimeoutlen=100
+
+set history=500
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+set autoindent
+
+set ignorecase smartcase
+
+set spelllang=en_gb
+syntax spell toplevel
+
+autocmd FileType markdown setlocal shiftwidth=4 softtabstop=4 tabstop=4 wrap linebreak nolist wrap lbr colorcolumn=0 synmaxcol=999999
+autocmd FileType elm setlocal shiftwidth=4 softtabstop=4 tabstop=4
+
+set laststatus=2
+
+set linebreak
+
+set incsearch
+set hlsearch
+
+set scrolloff=5
+
+set nobackup
+set nowritebackup
 set noswapfile
-if exists("+undofile")
-  " undofile - This allows you to use undos after exiting and restarting
-  " This, like swap and backups, uses .vim-undo first, then ~/.vim/undo
-  " :help undo-persistence
-  " This is only present in 7.3+
-  if isdirectory($HOME . '/.vim/undo') == 0
-    :silent !mkdir -p ~/.vim/undo > /dev/null 2>&1
-  endif
-  set undodir=./.vim-undo//
-  set undodir+=~/.vim/undo//
-  set undofile
+
+set backspace=indent,eol,start
+
+set wildmode=full
+set wildmenu
+
+let mapleader=","
+noremap \ ,
+
+set wildignore+=*.o,*.obj,.git,node_modules,_site,*.class,*.zip,*.aux
+
+set number
+
+" clear highlights by hitting ESC
+" or by hitting enter in normal mode
+nnoremap <CR> :noh<CR><CR>
+
+set list listchars=tab:»·,trail:·
+
+command! Q q
+
+set splitbelow
+set splitright
+
+set tags=./.tags;
+
+autocmd BufNewFile,BufRead *.tsx set filetype=typescript.jsx
+
+" make the completion menu a bit more readable
+highlight PmenuSel ctermbg=white ctermfg=black
+highlight Pmenu ctermbg=black ctermfg=white
+
+" so it's clear which paren I'm on and which is matched
+highlight MatchParen cterm=none ctermbg=none ctermfg=yellow
+
+"few nicer JS colours
+highlight xmlAttrib ctermfg=121
+highlight jsThis ctermfg=224
+highlight jsSuper ctermfg=13
+highlight jsFuncCall ctermfg=cyan
+highlight jsComment ctermfg=245 ctermbg=none
+highlight jsClassProperty ctermfg=14 cterm=bold
+
+" ~~~ MAPPINGS BELOW ~~~
+
+"gtfo ex mode
+map Q <Nop>
+
+" vim-test
+map <Leader>e :TestFile<CR>
+map <Leader>n :TestNearest<CR>
+map <Leader>l :TestLast<CR>
+map <Leader>s :TestSuite<CR>
+
+" new file in current directory
+map <Leader>nf :e <C-R>=expand("%:p:h") . "/" <CR>
+
+" toggle spellcheck
+map <leader>sc :setlocal spell!<CR>
+
+map <leader>v :vsplit<CR>
+
+" clean up any trailing whitespace
+nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<cr>
+
+" Don't add the comment prefix when I hit enter or o/O on a comment line.
+autocmd FileType * setlocal formatoptions-=r formatoptions-=o
+
+noremap H ^
+noremap L $
+
+" http://blog.petrzemek.net/2016/04/06/things-about-vim-i-wish-i-knew-earlier/
+" better jk normally but don't remap when it's called with a count
+noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
+noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
+
+" FZF.vim
+nnoremap <leader>t :Files<cr>
+nnoremap <leader>b :Buffers<cr>
+
+" CHARLIE - added easymotion mappings for char, line, and word
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+
+" let g:fzf_prefer_tmux = 1
+
+" Elm.vim settings
+let g:elm_format_autosave = 1
+let g:elm_setup_keybindings = 0
+
+" make copy/paste from system clip easier
+vnoremap <leader>8 "*y
+vnoremap <leader>9 "*p
+nnoremap <leader>8 "*p
+
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 'never'
+" disable the Ale HTML linters
+let g:ale_linters = {
+\   'html': [],
+\}
+let g:ale_set_highlights = 0
+
+" stop Elm.vim trying to show compiler erorrs in Vim
+let g:elm_format_fail_silently = 1
+
+" set Prettier up to run on save
+let g:ale_fixers = {}
+let g:ale_fixers['javascript'] = [
+\ 'prettier', 'eslint'
+\]
+let g:ale_fix_on_save = 1
+let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5 --no-semi'
+
+if has('nvim')
+  tnoremap <c-h> <c-\><c-n><c-w>h
+  tnoremap <c-j> <c-\><c-n><c-w>j
+  tnoremap <c-k> <c-\><c-n><c-w>k
+  tnoremap <c-l> <c-\><c-n><c-w>l
+
+  autocmd BufWinEnter,WinEnter term://* startinsert
+
+  let test#strategy = 'neovim'
 endif
-hi DiffText gui=underline guibg=red guifg=black
-set guifont=Monaco:h14
 
-" Syntastic support
-let g:syntastic_javascript_checkers = ['eslint']
+set completeopt-=preview
 
-" Toggle TagBar. I don't use it a lot, but it's helpful.
-nnoremap <leader>t :TagbarToggle<CR>
-
-" ***************************  Groovy support  ***************************
-
-let g:tagbar_type_groovy = {
-    \ 'ctagstype' : 'groovy',
-    \ 'kinds'     : [
-        \ 'p:package',
-        \ 'c:class',
-        \ 'i:interface',
-        \ 'f:function',
-        \ 'v:variables',
-    \ ]
-    \ }
-
-"" Navigation functions (open class file, find subclasses)
-" from:  http://www.objectpartners.com/2012/02/21/using-vim-as-your-grails-ide-part-1-navigating-your-project/
-" (except using Ack versus Grep)
-map <C-i> :call OpenVariableUnderCursor(expand("<cword>"))<CR>
-map <Leader>s :silent call FindSubClasses(expand("<cword>"))<CR>
-
-function! OpenVariableUnderCursor(varName)
-    let filename = substitute(a:varName,'(<w+>)', 'u1', 'g')
-    :call OpenFileUnderCursor(filename)
-endfunction
-
-function! OpenFileUnderCursor(filename)
-    let ext = fnamemodify(expand("%:p"), ":t:e")
-    execute ":find " . a:filename . "." . ext
-endfunction
-
-function! FindSubClasses(classname)
-    execute ":Ack '\(implements\\|extends\) " . a:classname . "' *"
-endfunction
+" so Emmet.vim will work in JSX
+let g:user_emmet_settings = {
+\  'javascript.jsx' : {
+\      'extends': 'jsx',
+\      'quote_char': '"',
+\  },
+\}
 
